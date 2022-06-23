@@ -1,0 +1,18 @@
+
+
+.image {
+    background-color: #ffff;
+    width: 100px;
+    padding: 4px;
+    border-radius: 100px;
+
+}
+
+.avatar {
+    margin-top: 25px;
+    width: 108px;
+    height: 108px;
+    border-radius: 108px;
+    background-color: #DB3A5D;
+    padding: 4px;
+}

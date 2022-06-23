@@ -1,0 +1,29 @@
+.navbarHeader {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 60px;
+    grid-area: n-h;
+    border-bottom: 1px solid #E5E7EB;
+    border-right: 1px solid #E5E7EB;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* box-shadow:-5px 1px 10px 0px rgb(0 0 0 / 50%) ;;*/
+}
+
+.logo {
+    width: 100px;
+
+}
+
+.navbarHeaderButton {
+    width: 25px;
+    padding: 5px;
+    border-radius: 30px;
+    background-color: #F0F2F5;
+
+}
+
+
