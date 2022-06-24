@@ -3,12 +3,12 @@
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
-    width: 1200px;
+    width: 100vw;
     grid-template-areas: "n-h h"
                             "n c";
 
     grid-template-rows: 60px 1fr;
-    grid-template-columns: 3fr 10fr;
+    grid-template-columns: 2fr 7fr;
     /*grid-gap: 10px;*/
 
 }
@@ -28,7 +28,8 @@
     align-items: center;
 }
 
-.content {
+.aboutUser {
     grid-area: c;
     background-color: #F0F2F5;
+    padding: 80px;
 }

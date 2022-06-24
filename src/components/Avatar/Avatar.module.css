@@ -2,7 +2,7 @@
 
 .image {
     background-color: #ffff;
-    width: 100px;
+    width: 85px;
     padding: 4px;
     border-radius: 100px;
 
@@ -10,8 +10,8 @@
 
 .avatar {
     margin-top: 25px;
-    width: 108px;
-    height: 108px;
+    width: 93px;
+    height: 93px;
     border-radius: 108px;
     background-color: #DB3A5D;
     padding: 4px;

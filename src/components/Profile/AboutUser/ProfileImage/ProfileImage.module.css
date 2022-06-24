@@ -1,0 +1,19 @@
+.profileImage {
+    width: 188px;
+    height: 188px;
+    border-radius: 108px;
+    background-color: #DB3A5D;
+    padding: 4px;
+    grid-area: p_image;
+}
+
+
+
+.image {
+    background-color: #ffff;
+    width: 180px;
+    padding: 4px;
+    border-radius: 100px;
+
+}
+

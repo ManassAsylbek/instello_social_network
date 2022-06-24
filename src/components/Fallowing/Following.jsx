@@ -1,7 +1,7 @@
 import React from "react";
-import './Fallowing.module.css'
+import s from './Fallowing.module.css'
 const Following= ()=> {
-    return  <div className="following">
+    return  <div className={s.following}>
         <p>Following</p>
         <p>1220</p>
     </div>

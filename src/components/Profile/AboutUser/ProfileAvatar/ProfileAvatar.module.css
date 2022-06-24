@@ -1,0 +1,9 @@
+.profileAvatar{
+    grid-area: profile;
+}
+
+.userName{
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+}
