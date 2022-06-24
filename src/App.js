@@ -11,6 +11,8 @@ import Post from "./components/Post/Post";
 import Following from "./components/Fallowing/Following";
 import Follower from "./components/Fallower/Follower";
 import Avatar from "./components/Avatar/Avatar";
+import Dialogs from "./components/Dialogs/Dialogs";
+
 
 
 
@@ -20,9 +22,9 @@ const App = () => {
     return (
         <div className="appWrapper">
             <Header />
-            <div className='navbarWrapper'>
+            <div className='appWrapperNavbar'>
                 <NavbarHeader/>
-                <div className="avatarWrapper">
+                <div className="appWrapperAvatar">
                     <Avatar/>
                     <NickName />
                     <div className="follow">
@@ -34,7 +36,10 @@ const App = () => {
                 </div>
                 <Navbar />
             </div>
-            <AboutUser/>
+            <div className="appWrapperContent">
+                <Dialogs/>
+                {/*<AboutUser/>*/}
+            </div>
 
         </div>
     );

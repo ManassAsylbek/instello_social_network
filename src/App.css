@@ -3,9 +3,9 @@
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
-    width: 100vw;
+    width: 98vw;
     grid-template-areas: "n-h h"
-                            "n c";
+                            "n user";
 
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 7fr;
@@ -13,7 +13,7 @@
 
 }
 
-.avatarWrapper {
+.appWrapperAvatar {
     text-align: center;
     border-bottom: 1px solid #E5E7EB;
     display: flex;
@@ -28,8 +28,8 @@
     align-items: center;
 }
 
-.aboutUser {
-    grid-area: c;
+.appWrapperContent {
+    grid-area: user;
     background-color: #F0F2F5;
     padding: 80px;
 }

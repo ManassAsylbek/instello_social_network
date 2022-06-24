@@ -9,7 +9,7 @@ import Explorer from "./Explorer/Explorer";
 
 const AboutUser = () => {
     return (
-        <div className="aboutUser">
+        <div>
             <div className={s.userInform}>
                 <ProfileImage/>
                 <ProfileAvatar/>

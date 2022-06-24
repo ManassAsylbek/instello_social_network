@@ -1,9 +1,8 @@
 
 .userInform {
     display: grid;
-    grid-area: user;
-    grid-template-areas: "p_image profile" "p_image buttons";
+    grid-template-areas: "p_image profile"
+                          "p_image buttons";
     grid-gap: 0 50px;
-    /*grid-template-rows: 1fr 2fr;*/
-    /*grid-template-columns: 3fr 10fr;*/
+
 }

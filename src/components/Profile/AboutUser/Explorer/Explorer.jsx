@@ -6,7 +6,7 @@ const Explorer = () => {
         <div className={s.explorer}>
             <p  className={s.text}>Explorer</p>
             <ExplorerImage />
-            <ExplorerImage />
+            <ExplorerImage  />
             <ExplorerImage />
             <ExplorerImage />
             <ExplorerImage />
