@@ -11,7 +11,7 @@ import Post from "./components/Post/Post";
 import Following from "./components/Fallowing/Following";
 import Follower from "./components/Fallower/Follower";
 import Avatar from "./components/Avatar/Avatar";
-import Dialogs from "./components/Dialogs/Dialogs";
+// import Dialogs from "./components/Dialogs/Dialogs";
 
 
 
@@ -37,8 +37,8 @@ const App = () => {
                 <Navbar />
             </div>
             <div className="appWrapperContent">
-                <Dialogs/>
-                {/*<AboutUser/>*/}
+                {/*<Dialogs/>*/}
+                <AboutUser/>
             </div>
 
         </div>
