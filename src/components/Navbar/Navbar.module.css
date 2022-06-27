@@ -2,5 +2,22 @@
     grid-area: n;
     background-color: #ffffff;
     border-right: 1px solid #E5E7EB;
+    display: grid;
 
+
+
+}
+a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #686868;
+
+}
+.item{
+    padding-left: 25px;
+    padding-top: 15px;
+}
+.active{
+    color:#EC4899;
+    cursor: pointer;
 }

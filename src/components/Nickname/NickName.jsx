@@ -1,8 +1,8 @@
 import React from "react";
-import s from './Nickname.css'
+import s from './Nickname.module.css'
 const NickName= ()=> {
-    return  <div className={s.NickName}>
-        <p>Stella Johnson</p>
+    return  <div className={s.nickName}>
+        <a href="profile">Stella Johnson</a>
     </div>
 }
 

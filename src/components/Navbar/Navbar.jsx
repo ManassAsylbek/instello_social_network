@@ -1,27 +1,28 @@
 import React from "react";
 import s from'./Navbar.module.css';
+import {NavLink} from "react-router-dom";
 const Navbar = ()=> {
     return <nav className="nav">
         <div  className={s.item}>
-            <a href="/feed">Feed</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/feed">Feed</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="/explore">Explore</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/explore">Explore</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="/dialogs">Messages</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/dialogs">Messages</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="/trending">Trending</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/trending">Trending</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="/marketplace">Marketplace</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/marketplace">Marketplace</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="/Setting">Setting</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/setting">Setting</NavLink>
         </div>
         <div  className={s.item}>
-            <a href="profile">My Profile</a>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="profile">My Profile</NavLink>
         </div>
     </nav>
 }
