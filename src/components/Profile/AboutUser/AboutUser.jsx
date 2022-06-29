@@ -7,7 +7,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Explorer from "./Explorer/Explorer";
 
 
-const AboutUser = () => {
+const AboutUser = (props) => {
     return (
         <div>
             <div className={s.userInform}>
@@ -15,7 +15,7 @@ const AboutUser = () => {
                 <ProfileInfo/>
                 <Buttons/>
             </div>
-            <Explorer/>
+            <Explorer explorerData={props.explorerData}/>
         </div>
     )
 }

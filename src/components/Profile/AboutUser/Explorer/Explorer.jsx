@@ -1,19 +1,16 @@
 import React from "react";
 import s from './Explorer.module.css';
 import ExplorerImage from "./ExplorerImage/ExplorerImage";
-import post_1 from "../../../../assets/image/post1.jpg"
-const Explorer = () => {
+
+const Explorer = (props) => {
+
+    let explorerElement=props.explorerData.map(exp =><ExplorerImage img={exp.img}/> )
+
     return (
+
         <div className={s.explorer}>
             <p  className={s.text}>Explorer</p>
-            <ExplorerImage image={post_1}/>
-            <ExplorerImage  />
-            <ExplorerImage />
-            <ExplorerImage />
-            <ExplorerImage />
-            <ExplorerImage />
-            <ExplorerImage />
-            <ExplorerImage />
+            {explorerElement}
         </div>
     )
 }
