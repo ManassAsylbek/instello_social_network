@@ -7,7 +7,7 @@
 
 
 }
-a{
+.item a{
     text-decoration: none;
     font-size: 18px;
     color: #686868;
@@ -17,7 +17,7 @@ a{
     padding-left: 25px;
     padding-top: 15px;
 }
-.active{
+.item .active{
     color:#EC4899;
     cursor: pointer;
 }

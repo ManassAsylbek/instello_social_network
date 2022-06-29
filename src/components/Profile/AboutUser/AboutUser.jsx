@@ -3,7 +3,7 @@ import s from "./AboutUser.module.css";
 
 import ProfileImage from "./ProfileImage/ProfileImage";
 import Buttons from "./Buttons/Buttons";
-import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Explorer from "./Explorer/Explorer";
 
 
@@ -12,7 +12,7 @@ const AboutUser = () => {
         <div>
             <div className={s.userInform}>
                 <ProfileImage/>
-                <ProfileAvatar/>
+                <ProfileInfo/>
                 <Buttons/>
             </div>
             <Explorer/>

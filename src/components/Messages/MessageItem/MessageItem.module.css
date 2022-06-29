@@ -1,0 +1,65 @@
+
+
+.chats {
+    /*grid-area:chats;*/
+    padding: 15px;
+    border-top: 1px solid #E5E7EB;
+    border-left: 1px solid #E5E7EB;
+}
+
+.chat {
+
+}
+
+
+
+
+
+
+
+.messagesItem{
+    /*grid-area: item;*/
+    border-top: 1px solid #E5E7EB;
+
+}
+
+
+
+
+
+
+.message .navLink{
+    display: grid;
+    grid-template-columns: 19% 81%;
+    align-items: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
+}
+.messages  .active{
+    background-color: #F3F4F6;
+    color:#000000;
+    cursor: pointer;
+
+}
+.message img {
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+
+}
+
+
+.active{
+    color:#EC4899;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

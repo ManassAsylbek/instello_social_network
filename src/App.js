@@ -11,7 +11,7 @@ import Post from "./components/Post/Post";
 import Following from "./components/Fallowing/Following";
 import Follower from "./components/Fallower/Follower";
 import Avatar from "./components/Avatar/Avatar";
-import Dialogs from "./components/Dialogs/Dialogs";
+import Messages from "./components/Messages/Messages";
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import Feed from "./components/Feed/Feed";
 import Explore from "./components/Explore/Explore";
@@ -29,7 +29,9 @@ const App = () => {
                     <NavbarHeader/>
                     <div className="appWrapperAvatar">
                         <Avatar/>
-                        <NickName/>
+
+                            <NickName/>
+
                         <div className="follow">
                             <Post/>
                             <Following/>
@@ -43,7 +45,7 @@ const App = () => {
                     <Routes>
                         <Route path="/feed" element={<Feed/>}/>
                         <Route path="/explore" element={<Explore/>}/>
-                        <Route path="/dialogs" element={<Dialogs/>}/>
+                        <Route path="/messages" element={<Messages/>}/>
                         <Route path="/trending" element={<Trending/>}/>
                         <Route path="/marketplace" element={<Marketplace/>}/>
                         <Route path="/setting" element={<Setting/>}/>

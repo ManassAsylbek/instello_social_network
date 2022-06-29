@@ -3,15 +3,16 @@
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
-    width: 98vw;
+    /*width: 98vw;*/
     grid-template-areas: "n-h h"
                             "n user";
 
     grid-template-rows: 65px 1fr;
-    grid-template-columns: 2fr 7fr;
+    grid-template-columns: 22% 78%;
     /*grid-gap: 10px;*/
 
 }
+
 
 .appWrapperAvatar {
     text-align: center;
@@ -31,5 +32,10 @@
 .appWrapperContent {
     grid-area: user;
     background-color: #F0F2F5;
-    padding: 80px;
+    padding: 40px;
+}
+.appWrapperNavbar{
+    position: fixed;
+    width: 22%;
+    border-right: 1px solid #E5E7EB;
 }

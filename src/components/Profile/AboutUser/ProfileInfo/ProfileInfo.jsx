@@ -1,6 +1,6 @@
 import React from "react";
-import s from './ProfileAvatar.module.css'
-const ProfileAvatar = () => {
+import s from './ProfileInfo.module.css'
+const ProfileInfo = () => {
     return (
         <div className={s.profileAvatar}>
             <p className={s.userName}>Stella Jonathan</p>
@@ -8,4 +8,4 @@ const ProfileAvatar = () => {
         </div>
     )
 }
-export default ProfileAvatar;
+export default ProfileInfo;

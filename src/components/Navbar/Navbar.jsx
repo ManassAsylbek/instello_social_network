@@ -10,7 +10,7 @@ const Navbar = ()=> {
             <NavLink className={(navData) => navData.isActive? s.active:''} to="/explore">Explore</NavLink>
         </div>
         <div  className={s.item}>
-            <NavLink className={(navData) => navData.isActive? s.active:''} to="/dialogs">Messages</NavLink>
+            <NavLink className={(navData) => navData.isActive? s.active:''} to="/messages">Messages</NavLink>
         </div>
         <div  className={s.item}>
             <NavLink className={(navData) => navData.isActive? s.active:''} to="/trending">Trending</NavLink>
