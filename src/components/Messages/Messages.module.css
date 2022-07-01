@@ -8,11 +8,7 @@
 
 }
 
-.mess{
-    margin: 0 0 25px 0;
-    font-size: 25px;
-    font-weight: 600;
-}
+
 .messageHeader{
     display: grid;
     height: 40px;
@@ -23,8 +19,6 @@
     align-items: center;
     //justify-items: center;
     border-radius: 8px;
-
-
 }
 
 .messageHeader input{

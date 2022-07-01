@@ -5,13 +5,18 @@ import FeedBlogAction from "./FeedBlogAction/FeedBlogAction";
 import FeedBlogPost from "./FeedBlogPost/FeedBlogPost";
 import FeedBlogHeader from "./FeedBlogHeader/FeedBlogHeader";
 
+
 const FeedBlog = (props) => {
+
     return (
-        <div className={s.feedBlog}>
-            <FeedBlogHeader/>
-            <FeedBlogPost/>
-            <FeedBlogAction/>
-            <FeedBlogComment/>
+        <div>
+            <p className="titleName">Feed</p>
+            <div className={s.feedBlog}>
+                <FeedBlogHeader/>
+                <FeedBlogPost/>
+                <FeedBlogAction/>
+                <FeedBlogComment feedPage={props.feedPage}/>
+            </div>
         </div>
     )
 }

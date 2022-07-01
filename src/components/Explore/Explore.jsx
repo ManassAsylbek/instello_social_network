@@ -4,7 +4,8 @@ import s from './Explore.module.css';
 const Explore =(props)=>{
     return (
         <div>
-           explore
+           <p className='titleName'>explore</p>
+
         </div>
     )
 }

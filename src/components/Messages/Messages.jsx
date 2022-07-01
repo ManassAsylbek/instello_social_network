@@ -14,7 +14,7 @@ const Messages = (props) => {
     let chatElement = props.chatData.map(c => <ChatsItem message = {c.message}/>)
 
     return (
-        <div><p className={s.mess}>Messages</p>
+        <div><p className={s.titleName}>Messages</p>
             <div className={s.messages}>
                 <div className={s.messageHeader}>
                     <input type="text" placeholder="Search"/>

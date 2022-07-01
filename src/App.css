@@ -3,6 +3,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
+
     /*width: 98vw;*/
     grid-template-areas: "n-h h"
                             "n user";
@@ -12,7 +13,11 @@
     /*grid-gap: 10px;*/
 
 }
-
+.titleName{
+    margin: 0 0 25px 0;
+    font-size: 25px;
+    font-weight: 600;
+}
 
 .appWrapperAvatar {
     text-align: center;
@@ -21,6 +26,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+
 }
 
 .follow {

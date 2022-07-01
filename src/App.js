@@ -44,13 +44,14 @@ const App = (props) => {
                 </div>
                 <div className="appWrapperContent">
                     <Routes>
-                        <Route path="/feed" element={<Feed/>}/>
+                        <Route path="/feed" element={<Feed feedPage={props.state.feedPage}/>}/>
                         <Route path="/explore" element={<Explore/>}/>
-                        <Route path="/messages" element={<Messages chatData={props.chatData} messageData={props.messageData}/>}/>
+                        <Route path="/messages" element={<Messages
+                            chatData={props.state.messagesPage.chatData} messageData={props.state.messagesPage.messageData}/>}/>
                         <Route path="/trending" element={<Trending/>}/>
                         <Route path="/marketplace" element={<Marketplace/>}/>
                         <Route path="/setting" element={<Setting/>}/>
-                        <Route path="/profile" element={<AboutUser explorerData={props.explorerData}/>}/>
+                        <Route path="/profile" element={<AboutUser explorerData={props.state.profilePage.explorerData}/>}/>
                     </Routes>
                 </div>
 

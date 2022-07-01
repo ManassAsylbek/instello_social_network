@@ -1,0 +1,38 @@
+.feedBlogHeader{
+    display: grid;
+    grid-template-columns: 95% 5%;
+    align-items: center;
+    padding: 15px;
+}
+
+.navLink{
+    display: flex;
+}
+.image {
+    background-color: #ffff;
+    width: 30px;
+    padding: 3px;
+    border-radius: 33px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    background-color: #DB3A5D;
+    padding: 3px;
+}
+
+.menuImage{
+    width: 20px;
+}
+.navLink{
+    text-decoration:none;
+    color: #746866;
+}
+.navLink p{
+    margin: 0 0 0 15px;
+    align-self: center;
+    font-weight: 500;
+    font-size: 16px;
+}
