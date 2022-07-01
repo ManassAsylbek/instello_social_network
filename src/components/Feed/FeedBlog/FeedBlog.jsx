@@ -15,7 +15,7 @@ const FeedBlog = (props) => {
                 <FeedBlogHeader/>
                 <FeedBlogPost/>
                 <FeedBlogAction/>
-                <FeedBlogComment feedPage={props.feedPage}/>
+                <FeedBlogComment feedPage={props.feedPage} addComment={props.addComment}/>
             </div>
         </div>
     )

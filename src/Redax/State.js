@@ -42,12 +42,20 @@ let state ={
     },
     feedPage:{
         commentData: [
-            {user:avatar_2 ,comment:"In ut odio libero vulputate"},
-            {user: avatar_1  ,comment:"In ut odio dsfds sdfdsf"},
-            {user:avatar_6 ,comment:"In ut sdfdsfd gfgf wetre"},
+            {user:avatar_2, comment:"In ut odio libero vulputate"},
+            {user: avatar_1, comment:"In ut odio dsfds sdfdsf"},
+            {user:avatar_6, comment:"In ut sdfdsfd gfgf wetre"},
         ],
     }
 
+}
+
+ export let addComment = (comment) => {
+    let newComment ={
+        user: avatar_2,
+        comment:comment
+    };
+    state.feedPage.commentData.push(newComment);
 }
 
 

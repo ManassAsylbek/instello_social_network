@@ -44,7 +44,7 @@ const App = (props) => {
                 </div>
                 <div className="appWrapperContent">
                     <Routes>
-                        <Route path="/feed" element={<Feed feedPage={props.state.feedPage}/>}/>
+                        <Route path="/feed" element={<Feed feedPage={props.state.feedPage} addComment={props.addComment}/>}/>
                         <Route path="/explore" element={<Explore/>}/>
                         <Route path="/messages" element={<Messages
                             chatData={props.state.messagesPage.chatData} messageData={props.state.messagesPage.messageData}/>}/>

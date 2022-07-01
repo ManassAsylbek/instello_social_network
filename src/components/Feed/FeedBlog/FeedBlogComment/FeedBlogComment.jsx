@@ -4,20 +4,22 @@ import picture from '../../../../assets/image/picture.png';
 import camera from '../../../../assets/image/video-camera.png';
 import Comment from "./Comment/Comment";
 
-/*<input type="text" onChange="alert(this.value)">
-    <input type="button" value="Button">*/
-
 
 const FeedBlogComment = (props) => {
 
-    let commentElements = props.feedPage.commentData.map(object => <Comment user={object.user} comment={object.comment}/>);
-    let newCommentElement= React.createRef();//создаю ссылку
+    let commentElements = props.feedPage.commentData.map(object => <Comment user={object.user}
+                                                                            comment={object.comment}/>);
+    let newCommentElement = React.createRef();//создаю ссылку
 
-    let addComment=(e) => {
-        if(e.key === "Enter"){
-            let text=newCommentElement.current.value;
-            alert(text)
+    let addCommentKey = (e) => {
+        if (e.key === "Enter") {
+            let text = newCommentElement.current.value;
+            props.addComment(text)
         }
+    }
+    let addComment1 = (e) => {
+        let text = newCommentElement.current.value;
+        props.addComment(text);
     }
 
     return (
@@ -25,10 +27,11 @@ const FeedBlogComment = (props) => {
             <div className={s.comment}>
                 {commentElements}
             </div>
-            <div className={s.getComment}><input type="text" onKeyDown={addComment} ref={newCommentElement}
-
+            <div className={s.getComment}><input type="text" onKeyDown={addCommentKey} ref={newCommentElement}
                                                  placeholder="Add you coment..."/>
-                <div><img  src={picture} alt=""/>
+                <div>
+                    <p onClick={addComment1}>POST</p>
+                    <img src={picture} alt=""/>
                     <img src={camera} alt=""/></div>
             </div>
         </div>
