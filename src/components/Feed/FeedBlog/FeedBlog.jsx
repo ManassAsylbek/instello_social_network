@@ -4,6 +4,7 @@ import FeedBlogComment from "./FeedBlogComment/FeedBlogComment";
 import FeedBlogAction from "./FeedBlogAction/FeedBlogAction";
 import FeedBlogPost from "./FeedBlogPost/FeedBlogPost";
 import FeedBlogHeader from "./FeedBlogHeader/FeedBlogHeader";
+import FeedBlogCommentContainer from "./FeedBlogComment/FeedBlogCommentContainer";
 
 
 const FeedBlog = (props) => {
@@ -15,7 +16,7 @@ const FeedBlog = (props) => {
                 <FeedBlogHeader/>
                 <FeedBlogPost/>
                 <FeedBlogAction/>
-                <FeedBlogComment feedPage={props.feedPage} addComment={props.addComment}/>
+                <FeedBlogCommentContainer/>
             </div>
         </div>
     )
