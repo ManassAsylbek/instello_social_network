@@ -1,0 +1,31 @@
+
+
+
+.commentAvatar{
+    display: flex;
+    align-items: center;
+}
+.commentAvatar p{
+    margin: 0;
+    padding: 15px;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 600;
+
+}
+.image {
+    background-color: #ffff;
+    width: 40px;
+    border-radius: 40px;
+}
+
+/*.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    background-color: #DB3A5D;
+    padding: 3px;
+}*/
+
+
+

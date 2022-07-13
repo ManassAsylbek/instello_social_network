@@ -1,0 +1,32 @@
+
+
+.chats {
+    /*grid-area:chats;*/
+    padding: 15px;
+    border-top: 1px solid #E5E7EB;
+    border-left: 1px solid #E5E7EB;
+}
+
+
+
+.chatsItemAvatar{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.chatsItemAvatar div{
+    padding: 15px;
+    background-color: #F3F4F6;
+    border-radius: 8px;
+
+}
+.image {
+    background-color: #ffff;
+    width: 55px;
+    border-radius: 55px;
+    margin-right: 20px;
+}
+
+
+
+
