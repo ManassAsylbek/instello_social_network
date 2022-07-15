@@ -1,8 +1,10 @@
 import React from "react";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../../Redax/Reducer/messages_Reducer";
 import Messages from "./Messages";
+import {connect} from "react-redux";
 
 
+/*
 const MessagesCantainer = (props) => {
 
     let state = props.store.getState()
@@ -27,5 +29,29 @@ const MessagesCantainer = (props) => {
 
     )
 }
+*/
 
+
+let mapStateToProps = (state) => {
+    return {
+        chatData: state.messagesPage.chatData,
+        messageData: state.messagesPage.messageData,
+        updateNewMessageBody: state.messagesPage.updateNewMessageBody
+    }
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewMessageBodyCreator: (body) => {
+            /*let action = updateNewMessageBodyCreator(body)*///это функция реагирует на изминение при вводе
+            dispatch(updateNewMessageBodyCreator(body));
+        },
+        sendMessageCreator: () => {
+            dispatch(sendMessageCreator());
+        }
+
+    }
+}
+
+
+const MessagesCantainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
 export default MessagesCantainer;

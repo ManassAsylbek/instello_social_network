@@ -5,7 +5,7 @@ import FeedBlog from "./FeedBlog/FeedBlog";
 const Feed =(props)=>{
     return (
         <div className={s.feedWrapper}>
-          <FeedBlog feedPage={props.feedPage} addComment={props.addComment}/>
+          <FeedBlog/>
         </div>
     )
 }

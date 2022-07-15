@@ -22,25 +22,29 @@ let initialState={
         {id: 4, name: "John Snow", img: avatar_7},
         {id: 5, name: "Angelina Jolie", img: avatar_2}
     ],
+    updateNewMessageBody:""
+
 
 }
 
 const messagesReducer = (state = initialState,action) => {
+
 switch (action.type) {
+
     case updateNewMessageBody:
-        state.updateNewMessageBody = action.body;
-        return state
-    case sendMessage:
-        let newMessage = {
-            id: 6,
-            img: avatar_2,
-            message: state.updateNewMessageBody
+        return {
+            ...state,
+            updateNewMessageBody: action.body
         }
+       /* stateCopy.updateNewMessageBody = action.body;*/
 
-        state.updateNewMessageBody = "";//очишает инпут
-        state.chatData.push(newMessage)
-
-        return state
+    case sendMessage:
+        let body=state.updateNewMessageBody
+        return  {
+            ...state,
+            updateNewMessageBody : "",
+            chatData : [...state.chatData,{id: 6, img: avatar_2, message:body}]
+        }
     default:
         return state;
     }

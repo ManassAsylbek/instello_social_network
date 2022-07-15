@@ -10,10 +10,13 @@ import ChatAvatar from "./ChatAvatar/ChatAvatar";
 const Messages = (props) => {
 
 
-    let messagesElements = props.messageData.map(obj => <MessageItem name={obj.name} id={obj.id}
-                                                                                  src={obj.img}/>);
+    let messagesElements = props.messageData.map(obj => <MessageItem name={obj.name}
+                                                                     id={obj.id}
+                                                                     key={obj.id}
+                                                                     src={obj.img}/>);
 
-    let chatElement = props.chatData.map(obj => <ChatsItem message={obj.message} img={obj.img}/>)
+    let chatElement = props.chatData.map(obj => <ChatsItem message={obj.message} img={obj.img}
+                                                           key={obj.id} />)
 
 
     let newMessageBody = props.updateNewMessageBody;
@@ -24,6 +27,7 @@ const Messages = (props) => {
 
     let onSendMessageKey = (e) => {
         if (e.key === "Enter") {
+            let text=
             props.sendMessageCreator();
         }
     }
@@ -58,9 +62,12 @@ const Messages = (props) => {
                     {chatElement}
                 </div>
                 <div className={s.getMessage}>
-                    <input type="text" onChange={onNewMessageChange} onKeyDown={onSendMessageKey}
+                    <input type="text"
+                           onChange={onNewMessageChange}
+                           onKeyDown={onSendMessageKey}
                            ref={newMessageElement}
-                           placeholder="Your Message.." value={newMessageBody}/>
+                           placeholder="Your Message.."
+                           value={newMessageBody}/>
                     <div className={s.btn}>
                         <span onClick={onSendMessage}>Send</span>
                     </div>

@@ -12,7 +12,6 @@ import feedReducer from "./Reducer/feed_Reducer";
 import messagesReducer from "./Reducer/messages_Reducer";
 
 
-
 let store = {
     _state: {
         profilePage: {

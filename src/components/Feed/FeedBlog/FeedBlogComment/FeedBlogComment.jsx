@@ -7,30 +7,40 @@ import Comment from "./Comment/Comment";
 
 const FeedBlogComment = (props) => {
 
-    let commentElements = props.feedPage.commentData.map(object => <Comment user={object.user}
+    let commentElements = props.commentData.map(object => <Comment user={object.user} key={object.id}
                                                                             comment={object.comment}/>);
     let newCommentElement = React.createRef();//создаю ссылку
+    let newCommentText = props.newCommentText
 
-    let addCommentKey = (e) => {
+    let onAddCommentKey = (e) => {
         if (e.key === "Enter") {
             let text = newCommentElement.current.value;
-            props.addComment(text)
+            props.addCommentActionCreator(text)
         }
     }
-    let addComment1 = (e) => {
+    let onAddComment = (e) => {
         let text = newCommentElement.current.value;
-        props.addComment(text);
+        props.addCommentActionCreator(text);
     }
 
+    let onAddCommentChange = (e) => {
+        let text =e.target.value;
+        props.updateNewCommentTextActionCreator(text)
+    }
     return (
         <div className={s.feedBlogComment}>
             <div className={s.comment}>
                 {commentElements}
             </div>
-            <div className={s.getComment}><input type="text" onKeyDown={addCommentKey} ref={newCommentElement}
-                                                 placeholder="Add you coment..."/>
+            <div className={s.getComment}>
+                <input type="text"
+                                                 onChange={onAddCommentChange}
+                                                 onKeyDown={onAddCommentKey}
+                                                 ref={newCommentElement}
+                                                 placeholder="Add you coment..."
+                                                 value={newCommentText}/>
                 <div>
-                    <p onClick={addComment1}>POST</p>
+                    <p onClick={onAddComment}>POST</p>
                     <img src={picture} alt=""/>
                     <img src={camera} alt=""/></div>
             </div>

@@ -4,7 +4,7 @@ import s from "./AboutUser.module.css";
 import ProfileImage from "./ProfileImage/ProfileImage";
 import Buttons from "./Buttons/Buttons";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import Explorer from "./Explorer/Explorer";
+import ExplorerContainer from "./Explorer/ExplorerContainer";
 
 
 const AboutUser = (props) => {
@@ -15,7 +15,7 @@ const AboutUser = (props) => {
                 <ProfileInfo/>
                 <Buttons/>
             </div>
-            <Explorer explorerData={props.explorerData}/>
+            <ExplorerContainer/>
         </div>
     )
 }

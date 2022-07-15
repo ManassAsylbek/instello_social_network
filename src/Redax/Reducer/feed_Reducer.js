@@ -19,18 +19,19 @@ let initialState= {
 const feedReducer = (state=initialState,action) => { //используем в нвчале
 
     switch (action.type) {
+
         case ADD_COMMENT:
-            let newComment = {
-                user: avatar_2,
-                comment: state.newCommentText
-            };
-            state.commentData.push(newComment);
-            state.newCommentText = "";
-            return state
+            return {
+                ...state,
+                newCommentText : "",
+                commentData : [...state.commentData,{user: avatar_2, comment: state.newCommentText}]
+            }
 
         case UPDATE_NEW_COMMENT_TEXT:
-            state.newCommentText = action.newText;
-            return state
+            return{
+                ...state,
+                newCommentText:action.newText
+            }
         default:
             return state;
     }
