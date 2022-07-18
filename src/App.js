@@ -12,11 +12,11 @@ import Follower from "./components/Fallower/Follower";
 import Avatar from "./components/Avatar/Avatar";
 import {Route,Routes} from "react-router-dom";
 import Feed from "./components/Feed/Feed";
-import Explore from "./components/Explore/Explore";
 import Trending from "./components/Trending/Trending";
 import Marketplace from "./components/Marketplace/Marketplace";
 import Setting from "./components/Setting/Setting";
 import MessagesPage from "./components/Messages/MessagesPage";
+import ExplorePageContainer from "./components/Explore/ExplorePageContainer";
 
 
 
@@ -47,7 +47,7 @@ const App = (props) => {
                 <div className="appWrapperContent">
                     <Routes>
                         <Route path="/feed" element={<Feed />}/>
-                        <Route path="/explore" element={<Explore/>}/>
+                        <Route path="/explore" element={<ExplorePageContainer/>}/>
                         <Route path="/messages" element={<MessagesPage/>}/>
                         <Route path="/trending" element={<Trending/>}/>
                         <Route path="/marketplace" element={<Marketplace/>}/>

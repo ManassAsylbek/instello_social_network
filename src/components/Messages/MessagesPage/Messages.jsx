@@ -11,7 +11,6 @@ const Messages = (props) => {
 
 
     let messagesElements = props.messageData.map(obj => <MessageItem name={obj.name}
-                                                                     id={obj.id}
                                                                      key={obj.id}
                                                                      src={obj.img}/>);
 

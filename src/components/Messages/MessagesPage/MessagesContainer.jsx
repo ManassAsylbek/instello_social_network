@@ -53,5 +53,5 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-const MessagesCantainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
-export default MessagesCantainer;
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+export default MessagesContainer;

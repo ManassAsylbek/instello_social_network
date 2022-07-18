@@ -8,7 +8,7 @@ const MessageItem = (props) => {
 
     return (
         <div className={s.message + " " + s.active}>
-            <NavLink className={s.navLink} to={`/messages/${props.id}`}><img src={props.src} alt=""/>{props.name}
+            <NavLink className={s.navLink} to={`/messages/${props.name}`}><img src={props.src} alt=""/>{props.name}
             </NavLink>
         </div>
     )

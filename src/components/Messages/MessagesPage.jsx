@@ -1,11 +1,12 @@
 import React from "react";
-import MessagesCantainer from "./MessagesPage/MessagesContainer";
+import MessagesContainer from "./MessagesPage/MessagesContainer";
+
 
 
 
 const MessagesPage = (props) => {
 
-    return (<MessagesCantainer store={props.store}/>)
+    return (<MessagesContainer store={props.store}/>)
 }
 
 export default MessagesPage;

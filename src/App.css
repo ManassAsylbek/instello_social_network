@@ -45,3 +45,7 @@
     width: 22%;
     border-right: 1px solid #E5E7EB;
 }
+input{
+    border: none;
+    outline: none;
+}

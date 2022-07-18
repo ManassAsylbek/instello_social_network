@@ -1,7 +1,6 @@
 import React from "react";
-import s from './Explore.module.css';
-
-const Explore =(props)=>{
+import s from "./Users.module.css"
+const Users =(props)=>{
     return (
         <div>
            <p className='titleName'>explore</p>
@@ -10,4 +9,4 @@ const Explore =(props)=>{
     )
 }
 
-export default Explore;
+export default Users;

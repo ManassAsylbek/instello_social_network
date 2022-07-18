@@ -10,7 +10,7 @@ const FeedBlog = (props) => {
 
     return (
         <div>
-            <p className="titleName">Feed</p>
+            <span className="titleName">Feed</span>
             <div className={s.feedBlog}>
                 <FeedBlogHeader/>
                 <FeedBlogPost/>
