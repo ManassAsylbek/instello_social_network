@@ -45,7 +45,6 @@ let initialState = {
     ],
     interestData: ["Shop", "Travel", "Fitness", "Technlogy", "Music", "Architecture"],
     newCommentText: "cool! "
-
 }
 
 const exploreReducer = (state = initialState, action) => { //используем в нвчале
@@ -74,7 +73,7 @@ const exploreReducer = (state = initialState, action) => { //используе�
                 })
             } //
         case SET_USERS:
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: [/*...state.users,*/...action.users]} /*каждый раз будет добовлять новых юзеров*/
         default:
             return state;
     }

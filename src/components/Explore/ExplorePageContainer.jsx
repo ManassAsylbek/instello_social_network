@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../Redax/Reducer/Explore_Reducer";
-import ExplorePage from "./ExplorePage";
+/*import ExplorePage from "./ExplorePage";*/
+import ExplorePageClass from "./ExplorePageClass";
 /*import ExplorePageLocal from "./ExplorePageLocal";*/
 
 
@@ -25,5 +26,5 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-const ExplorePageContainer = connect(mapStateToProps, mapDispatchToProps)(ExplorePage);
+const ExplorePageContainer = connect(mapStateToProps, mapDispatchToProps)(ExplorePageClass);
 export default ExplorePageContainer;

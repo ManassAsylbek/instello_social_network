@@ -55,7 +55,6 @@ const App = (props) => {
                         <Route path="/marketplace" element={<Marketplace/>}/>
                         <Route path="/setting" element={<Setting/>}/>
                         <Route path="/profile" element={<AboutUser/>}/>
-                        <Route path="/profile" element={<AboutUser/>}/>
                     </Routes>
                 </div>
             </div>
