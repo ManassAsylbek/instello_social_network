@@ -1,12 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
-import ExplorePage from "./ExplorePage";
 import {followAC, setUsersAC, unfollowAC} from "../../Redax/Reducer/Explore_Reducer";
+import ExplorePage from "./ExplorePage";
+/*import ExplorePageLocal from "./ExplorePageLocal";*/
+
 
 let mapStateToProps = (state) => {
     return {
-        usersData:state.explorePage.usersData,
-        interestData:state.explorePage.interestData
+        users:state.explorePage.users,
+        interestData:state.explorePage.interestData,
+        usersPhotoData:state.explorePage.usersPhotoData
     }
 }
 let mapDispatchToProps = (dispatch) => {

@@ -10,30 +10,31 @@ import Post from "./components/Post/Post";
 import Following from "./components/Fallowing/Following";
 import Follower from "./components/Fallower/Follower";
 import Avatar from "./components/Avatar/Avatar";
-import {Route,Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Feed from "./components/Feed/Feed";
 import Trending from "./components/Trending/Trending";
 import Marketplace from "./components/Marketplace/Marketplace";
 import Setting from "./components/Setting/Setting";
 import MessagesPage from "./components/Messages/MessagesPage";
 import ExplorePageContainer from "./components/Explore/ExplorePageContainer";
-
-
+import LoginPage from "./Login/LoginPage";
 
 
 const App = (props) => {
 
 
     return (
+        <div>
 
             <div className="appWrapper">
                 <Header/>
+
                 <div className='appWrapperNavbar'>
                     <NavbarHeader/>
                     <div className="appWrapperAvatar">
                         <Avatar/>
 
-                            <NickName/>
+                        <NickName/>
 
                         <div className="follow">
                             <Post/>
@@ -46,18 +47,19 @@ const App = (props) => {
                 </div>
                 <div className="appWrapperContent">
                     <Routes>
-                        <Route path="/feed" element={<Feed />}/>
+                        <Route path="/" element={<LoginPage/>}/>
+                        <Route path="/feed" element={<Feed/>}/>
                         <Route path="/explore" element={<ExplorePageContainer/>}/>
                         <Route path="/messages" element={<MessagesPage/>}/>
                         <Route path="/trending" element={<Trending/>}/>
                         <Route path="/marketplace" element={<Marketplace/>}/>
                         <Route path="/setting" element={<Setting/>}/>
-                        <Route path="/profile" element={<AboutUser />}/>
+                        <Route path="/profile" element={<AboutUser/>}/>
+                        <Route path="/profile" element={<AboutUser/>}/>
                     </Routes>
                 </div>
-
             </div>
-
+        </div>
     );
 }
 

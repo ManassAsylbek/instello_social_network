@@ -1,25 +1,26 @@
 import React from "react";
 import style from './ExplorePage.module.css';
-import avatar_1 from "../../assets/image/avatar-1.jpg";
-import avatar_6 from "../../assets/image/avatar-6.jpg";
-import avatar_4 from "../../assets/image/avatar-4.jpg";
-import avatar_7 from "../../assets/squadImage/img8.jpg";
-import avatar_2 from "../../assets/squadImage/img6.jpg";
-import avatar_3 from "../../assets/image/img3.jpg";
-import avatar_5 from "../../assets/squadImage/img2.jpg";
-import avatar_8 from "../../assets/squadImage/img4.jpg";
-import avatar_9 from "../../assets/squadImage/img5.jpg";
+import * as axios from "axios";
+import userPhoto from "../../assets/image/avatar-4.jpg"
 
 
 const ExplorePage = (props) => {
-/*if (props.usersData.length === 0){
-    axios.get("")
-    props.setUsers( [
-        )
-}*/
 
-    return (<div className={style.explore}>
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                props.setUsers(response.data.items)
+                }
+            )
+        }
+    }
+
+    return (
+        <div className={style.explore}>
             <span className={style.title}>Explore</span>
+            <button onClick={getUsers}>Get Users</button>
+
             <div className={style.search}>
                 {
                     props.interestData.map(u => <div className={style.searchItem}>{u}</div>)
@@ -27,25 +28,33 @@ const ExplorePage = (props) => {
             </div>
             <div className={style.users}>
                 {
-                    props.usersData.map(u =>
-                     /*   <div key={u.id} className={style.user}>*/
-                            <div className={style.userPhoto}>
-                                <img src={u.img} alt=""/>
-                                <div className={style.userN}>
-                                    <span className={style.userName}>{u.name}</span>
-                                    <span className={style.like}>{u.like}</span>
-                                    <span className={style.post}>{u.post}</span>
-                                    {u.followed
-                                        ? <button onClick={()=>{props.unfollow(u.id)}}>Unfollow</button>
-                                        : <button onClick={()=>{props.follow(u.id)}}>Follow</button>}
+                    props.users.map((u,i) =>
 
-                                </div>
-                        {/*    </div>*/}
+                        <div key={'u.id'} className={style.userPhoto}>
 
-                        </div>)
+                            <img src={u.photos.small != null?u.photos.small:
+                                props.usersPhotoData.filter((photo,i1)=>i===i1?true:false)} alt=""/>
+                                /*сложо, но можно понять - это кастыль */
+                            <div className={style.userN}>
+                                <span className={style.name} className={style.userName}>{u.name}</span>
+                                <span className={style.like}>{'u.like'}</span>
+                                <span className={style.post}>{'u.post'}</span><br/>
+                                {u.followed
+                                    ? <button onClick={() => {
+                                        props.unfollow(u.id)
+                                    }}>Unfollow</button>
+                                    : <button onClick={() => {
+                                        props.follow(u.id)
+                                        }
+                                    }>Follow</button>
+                                }
+                            </div>
+                        </div>
+                    )
                 }
             </div>
         </div>
+
     )
 }
 
