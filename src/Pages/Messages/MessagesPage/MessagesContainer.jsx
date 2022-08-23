@@ -1,5 +1,5 @@
 import React from "react";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../../Redax/Reducer/messages_Reducer";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../../Redux/Reducer/messages_Reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 

@@ -6,7 +6,7 @@ import MessagesContainer from "./MessagesPage/MessagesContainer";
 
 const MessagesPage = (props) => {
 
-    return (<MessagesContainer store={props.store}/>)
+    return (<MessagesContainer />)
 }
 
 export default MessagesPage;

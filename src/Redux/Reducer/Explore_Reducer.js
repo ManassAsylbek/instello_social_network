@@ -14,6 +14,11 @@ import avatar_9 from "../../assets/squadImage/img5.jpg";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_ADD_USERS = 'SET_ADD_USERS';
+const LOAD_PAGE = "LOAD_PAGE";
+const SET_USERS_COUNT = "SET_USERS_COUNT";
+const CURRENT_PAGE = "CURRENT_PAGE";
+const TOGGLE_FETCHING = "TOGGLE_FETCHING";
 
 
 let initialState = {
@@ -31,20 +36,24 @@ let initialState = {
     usersPhotoData: [
         avatar_1,
         avatar_6,
-       avatar_4,
+        avatar_4,
         avatar_7,
         avatar_2,
         avatar_3,
         avatar_5,
-       avatar_8,
+        avatar_8,
         avatar_9,
-        avatar_1,
-
 
 
     ],
     interestData: ["Shop", "Travel", "Fitness", "Technlogy", "Music", "Architecture"],
-    newCommentText: "cool! "
+    newCommentText: "cool! ",
+    pageSize: 9,
+    totalUsersCount: 0,
+    currentPage: 1,
+    loadPage: 1,
+    isFetching: false,
+
 }
 
 const exploreReducer = (state = initialState, action) => { //используем в нвчале
@@ -53,7 +62,6 @@ const exploreReducer = (state = initialState, action) => { //используе�
         case FOLLOW:
             return {
                 ...state,
-                /*usersData:{...state.usersData},*/
                 users: state.users.map(user => {  //копирает и меняет юзера
                     if (user.id === action.userId) {
                         return {...user, followed: true}
@@ -64,7 +72,7 @@ const exploreReducer = (state = initialState, action) => { //используе�
         case UNFOLLOW:
             return {
                 ...state,
-                /*usersData:{...state.usersData},*/
+
                 users: state.users.map(user => {  //копирает и меняет юзера
                     if (user.id === action.userId) {
                         return {...user, followed: false}
@@ -72,17 +80,38 @@ const exploreReducer = (state = initialState, action) => { //используе�
                     return user
                 })
             } //
+        /*case SET_USERS:
+            return {...state, users: [...state.users, ...action.users]}*/ /*каждый раз будет добовлять новых юзеров*/
         case SET_USERS:
-            return {...state, users: [/*...state.users,*/...action.users]} /*каждый раз будет добовлять новых юзеров*/
+            return {...state, users: [...action.users]} /*каждый раз будет добовлять новых юзеров*/
+        case SET_ADD_USERS:
+            return {...state, users: [...state.users, ...action.users],} /*каждый раз будет добовлять новых юзеров*/
+        case SET_USERS_COUNT:
+            return {...state, totalUsersCount: action.count} /*каждый раз будет добовлять новых юзеров*/
+        case TOGGLE_FETCHING:
+            return {...state, isFetching: action.boolean} /*/
+
+
+        case LOAD_PAGE:
+            return {...state, loadPage: action.number}
+        case CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage} /*каждый раз будет добовлять новых юзеров*/
+        /* case LOAD_USERS:
+             return {...state, users: [...state.users,...action.users]}*/
+
         default:
             return state;
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId})
-
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const follow = (userId) => ({type: FOLLOW, userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const setAddUsers = (users) => ({type: SET_ADD_USERS, users})
+export const setUsersTotalCount = (count) => ({type: SET_USERS_COUNT, count})
+export const loadPage = (number) => ({type: LOAD_PAGE, number})
+export const currentPage = (currentPage) => ({type: CURRENT_PAGE, currentPage})
+export const toggleFetching = (boolean) => ({type: TOGGLE_FETCHING, boolean})
 
 export default exploreReducer;
 

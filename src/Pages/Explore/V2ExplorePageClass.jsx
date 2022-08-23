@@ -1,7 +1,7 @@
 import React from "react";
 import style from './ExplorePage.module.css';
 import * as axios from "axios";
-import userPhoto from "../../assets/image/avatar-4.jpg";
+
 
 
 class ExplorePageClass extends React.Component{
@@ -9,10 +9,12 @@ class ExplorePageClass extends React.Component{
     constructor(props) {
         super(props);
     }
+
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
+                this.props.setTotalUseCount(response.data.totalCount)
             }
         );
     }
@@ -23,8 +25,23 @@ class ExplorePageClass extends React.Component{
 
         }
     }*/
+    onAddPage=()=>{
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+
+                    this.props.setUsers(response.data.items)
+                }
+            );
+    }
 
     render() {
+        let pageCount=Math.ceil(this.props.totalUsersCount/this.props.pageSize);
+
+        let pages=[];
+        for (let i=1; i<pageCount;i++){
+            pages.push(i)
+        }
         return (
             <div className={style.explore}>
                 <span className={style.title}>Explore</span>
@@ -32,14 +49,14 @@ class ExplorePageClass extends React.Component{
 
                 <div className={style.search}>
                     {
-                        this.props.interestData.map(u => <div className={style.searchItem}>{u}</div>)
+                        this.props.interestData.map(u => <div key={u} className={style.searchItem}>{u}</div>)
                     }
                 </div>
                 <div className={style.users}>
                     {
                         this.props.users.map((u,i) =>
 
-                            <div key={'u.id'} className={style.userPhoto}>
+                            <div key={u.id} className={style.userPhoto}>
 
                                 <img src={u.photos.small != null?u.photos.small:
                                     this.props.usersPhotoData.filter((photo,i1)=>i===i1?true:false)} alt=""/>
@@ -62,6 +79,8 @@ class ExplorePageClass extends React.Component{
                         )
                     }
                 </div>
+                <button onClick={()=>this.onAddPage()} className={style.btn}>Load more..</button>
+                <span>{this.props.totalUsersCount}</span>
             </div>
 
         )

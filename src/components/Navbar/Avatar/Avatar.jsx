@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Avatar.module.css';
-import userImg from '../../assets/image/avatar-2.jpg'
+import userImg from '../../../assets/image/avatar-2.jpg'
 import {NavLink} from "react-router-dom";
 
 const Avatar= ()=> {

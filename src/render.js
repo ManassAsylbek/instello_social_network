@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import State from "./Redax/State";
-import {addComment} from "./Redax/State";
+import State from "./Redux/State";
+import {addComment} from "./Redux/State";
 
 export let rerenderEntireTree = () =>{
 

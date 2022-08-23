@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Navbarheader.module.css'
-import logo from "../../assets/image/logo.png"
-import bulb from "../../assets/image/bulb.png"
+import logo from "../../../assets/image/logo.png"
+import bulb from "../../../assets/image/bulb.png"
 const NavbarHeader = () => {
     return <header className={s.navbarHeader}>
         <img className={s.logo} src={logo} alt=""/>

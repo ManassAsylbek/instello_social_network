@@ -1,26 +1,21 @@
 import React from "react";
 import style from './ExplorePage.module.css';
-import * as axios from "axios";
-import userPhoto from "../../assets/image/avatar-4.jpg"
+
+import userPhoto from "../../assets/squadImage/images.png"
 
 
 const ExplorePage = (props) => {
 
-    let getUsers = () => {
-        if (props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                .then(response => {
-                props.setUsers(response.data.items)
-                }
-            )
-        }
+    let pageCount=Math.ceil(props.totalUsersCount/props.pageSize);
+
+    let pages=[];
+    for (let i=1; i<pageCount;i++){
+        pages.push(i)
     }
 
     return (
         <div className={style.explore}>
             <span className={style.title}>Explore</span>
-            <button onClick={getUsers}>Get Users</button>
-
             <div className={style.search}>
                 {
                     props.interestData.map(u => <div className={style.searchItem}>{u}</div>)
@@ -32,11 +27,14 @@ const ExplorePage = (props) => {
 
                         <div key={'u.id'} className={style.userPhoto}>
 
-                            <img src={u.photos.small != null?u.photos.small:
-                                props.usersPhotoData.filter((photo,i1)=>i===i1?true:false)} alt=""/>
+                            <img src={u.photos.small != null
+                                ?u.photos.small
+                                :i>8
+                                    ? userPhoto
+                                    : props.usersPhotoData.filter((photo,i1)=>i===i1?true:false)} alt=""/>
                                 /*сложо, но можно понять - это кастыль */
                             <div className={style.userN}>
-                                <span className={style.name} className={style.userName}>{u.name}</span>
+                                <span className={style.userName}>{u.name}</span>
                                 <span className={style.like}>{'u.like'}</span>
                                 <span className={style.post}>{'u.post'}</span><br/>
                                 {u.followed
@@ -53,6 +51,11 @@ const ExplorePage = (props) => {
                     )
                 }
             </div>
+            <button onClick={()=>props.onAddPage()} className={style.btn}>Load more..</button>
+           {/* <div>
+                {pages.map(p=> <div className={props.currentPage===p?style.selected:style.pageNumber}
+                                     onClick={()=>props.onPageChanged(p)}>{p}</div>)}
+            </div>*/}
         </div>
 
     )

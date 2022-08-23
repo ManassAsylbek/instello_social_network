@@ -1,23 +1,19 @@
 import React from "react";
 import './App.css';
-
-import Navbar from "./components/Navbar/Navbar";
-import AboutUser from "./components/Profile/AboutUser/AboutUser";
+import AboutUser from "./Pages/Profile/AboutUser/AboutUser";
 import Header from "./components/Header/Header";
-import NavbarHeader from "./components/NavbarHeader/NavbarHeader";
-import NickName from "./components/Nickname/NickName";
-import Post from "./components/Post/Post";
-import Following from "./components/Fallowing/Following";
-import Follower from "./components/Fallower/Follower";
-import Avatar from "./components/Avatar/Avatar";
+
 import {Route, Routes} from "react-router-dom";
-import Feed from "./components/Feed/Feed";
-import Trending from "./components/Trending/Trending";
-import Marketplace from "./components/Marketplace/Marketplace";
-import Setting from "./components/Setting/Setting";
-import MessagesPage from "./components/Messages/MessagesPage";
-import ExplorePageContainer from "./components/Explore/ExplorePageContainer";
-import LoginPage from "./Login/LoginPage";
+import Feed from "./Pages/Feed/Feed";
+
+import Setting from "./Pages/Setting/Setting";
+import MessagesPage from "./Pages/Messages/MessagesPage";
+
+
+import Marketplace from "./Pages/Marketplace/Marketplace";
+import Trending from "./Pages/Trending/Trending";
+import Navbar from "./components/Navbar/Navbar";
+import ExplorePageContainer from "./Pages/Explore/ExplorePageContainer";
 
 
 const App = (props) => {
@@ -28,26 +24,9 @@ const App = (props) => {
 
             <div className="appWrapper">
                 <Header/>
-
-                <div className='appWrapperNavbar'>
-                    <NavbarHeader/>
-                    <div className="appWrapperAvatar">
-                        <Avatar/>
-
-                        <NickName/>
-
-                        <div className="follow">
-                            <Post/>
-                            <Following/>
-                            <Follower/>
-
-                        </div>
-                    </div>
-                    <Navbar/>
-                </div>
+                <Navbar/>
                 <div className="appWrapperContent">
                     <Routes>
-                        <Route path="/" element={<LoginPage/>}/>
                         <Route path="/feed" element={<Feed/>}/>
                         <Route path="/explore" element={<ExplorePageContainer/>}/>
                         <Route path="/messages" element={<MessagesPage/>}/>

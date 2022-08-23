@@ -32,17 +32,13 @@ const messagesReducer = (state = initialState,action) => {
 switch (action.type) {
 
     case updateNewMessageBody:
-        return {
-            ...state,
-            updateNewMessageBody: action.body
-        }
+        return {...state, updateNewMessageBody: action.body}
        /* stateCopy.updateNewMessageBody = action.body;*/
 
     case sendMessage:
         let body=state.updateNewMessageBody
         return  {
-            ...state,
-            updateNewMessageBody : "",
+            ...state, updateNewMessageBody : "",
             chatData : [...state.chatData,{id: 6, img: avatar_2, message:body}]
         }
     default:

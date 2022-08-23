@@ -1,5 +1,5 @@
 import React from "react";
-import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../Redax/Reducer/feed_Reducer";
+import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../Redux/Reducer/feed_Reducer";
 import FeedBlogComment from "./FeedBlogComment";
 import {connect} from "react-redux";
 
