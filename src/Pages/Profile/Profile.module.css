@@ -1,0 +1,41 @@
+.userInform {
+    display: flex;
+    grid-template-areas: "p_image profile"
+    "p_image buttons";
+    grid-gap: 0 50px;
+
+}
+.profileImage {
+    width: 188px;
+    height: 188px;
+    border-radius: 108px;
+    background-color: #DB3A5D;
+    padding: 4px;
+    grid-area: p_image;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.image {
+    background-color: #ffff;
+    width: 180px;
+    padding: 4px;
+    border-radius: 100px;
+}
+
+.profileAvatar{
+    grid-area: profile;
+}
+
+.userName{
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+}
+.button{
+    grid-area: buttons;
+}

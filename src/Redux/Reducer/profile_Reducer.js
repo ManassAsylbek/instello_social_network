@@ -7,6 +7,8 @@ import img_1 from "../../assets/image/img1.jpg";
 import img_8 from "../../assets/image/img8.jpg";
 import img_4 from "../../assets/image/img4.jpg";
 
+const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
+
 
 let initialState={
     explorerData: [
@@ -19,9 +21,19 @@ let initialState={
         {img: img_8, likeCounts: 30},
         {img: img_4, likeCounts: 30},
     ],
+    profile:null,
 }
 
 const profileReducer = (state =initialState,action) => {
-    return state;
+    switch (action.type) {
+
+        case SET_USERS_PROFILE:
+            return {...state, profile: action.profile}
+        default:
+            return state;
+    }
 }
+
+
+export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export default profileReducer

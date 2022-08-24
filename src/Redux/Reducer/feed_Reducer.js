@@ -39,7 +39,6 @@ const feedReducer = (state=initialState,action) => { //используем в �
 
 export const addCommentActionCreator = () => ({type: ADD_COMMENT})
 
-export const updateNewCommentTextActionCreator = (text) =>
-    ({type: UPDATE_NEW_COMMENT_TEXT, newText: text})
+export const updateNewCommentTextActionCreator = (text) => ({type: UPDATE_NEW_COMMENT_TEXT, newText: text})
 
 export default feedReducer

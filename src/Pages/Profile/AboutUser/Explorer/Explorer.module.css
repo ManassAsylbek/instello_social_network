@@ -1,6 +1,5 @@
 .explorer{
     display: grid;
-    grid-gap: 0px 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 5fr 5f;
     grid-gap: 4px;

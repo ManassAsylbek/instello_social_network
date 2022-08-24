@@ -12,6 +12,7 @@ const AboutUser = (props) => {
         <div>
             <div className={s.userInform}>
                 <ProfileImage/>
+
                 <ProfileInfo/>
                 <Buttons/>
             </div>

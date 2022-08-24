@@ -3,18 +3,17 @@ import {connect} from "react-redux";
 import * as axios from "axios";
 import ExplorePage from "./ExplorePage";
 
-/*import Preloader from "../../components/Comman/Preloader/Preloader";*/
 
 import {
     currentPage,
-    follow, loadPage,
-    setAddUsers,
+    follow,
+    setAddUsers, setloadPage,
     setUsers,
     setUsersTotalCount,
     toggleFetching,
     unfollow
 } from "../../Redux/Reducer/Explore_Reducer";
-import preloader from "../../assets/animation/Spinner-1s-200px.gif";
+
 import Preloader from "../../components/Comman/Preloader/Preloader";
 
 class ContainerExplorePageClass extends React.Component {
@@ -29,21 +28,22 @@ class ContainerExplorePageClass extends React.Component {
             .then(response => {
                     this.props.toggleFetching(false)
                     this.props.setUsers(response.data.items)
-                    this.props.toggleFetching(response.data.totalCount)
+                    this.props.setUsersTotalCount(response.data.totalCount)
                 }
             );
     }
 
     onAddPage = () => {
         this.props.toggleFetching(true)
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.loadPage + 1}&count=${8}`)
+        let n = +this.props.loadPage + 1
+        console.log(n)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${n}&count=${8}`)
             .then(response => {
                     this.props.toggleFetching(false)
                     this.props.setAddUsers(response.data.items)
                 }
             );
-        this.props.loadPage(this.props.loadPage + 1)
+        this.props.setloadPage(n)
     }
 
     onPageChanged = (p) => {
@@ -64,7 +64,7 @@ class ContainerExplorePageClass extends React.Component {
             pages.push(i)
         }
         return (<>
-                {this.props.isFetching===true
+                {this.props.isFetching
                     ? <Preloader />
                     : <ExplorePage
                         onPageChanged={this.onPageChanged}
@@ -136,7 +136,7 @@ export default connect(mapStateToProps, {
     setUsers,
     setAddUsers,
     setUsersTotalCount,
-    loadPage,
+    setloadPage,
     currentPage,
     toggleFetching
 })(ContainerExplorePageClass);

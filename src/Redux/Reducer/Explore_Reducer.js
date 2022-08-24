@@ -89,11 +89,11 @@ const exploreReducer = (state = initialState, action) => { //используе�
         case SET_USERS_COUNT:
             return {...state, totalUsersCount: action.count} /*каждый раз будет добовлять новых юзеров*/
         case TOGGLE_FETCHING:
-            return {...state, isFetching: action.boolean} /*/
-
+            return {...state, isFetching: action.boolean}
 
         case LOAD_PAGE:
             return {...state, loadPage: action.number}
+
         case CURRENT_PAGE:
             return {...state, currentPage: action.currentPage} /*каждый раз будет добовлять новых юзеров*/
         /* case LOAD_USERS:
@@ -109,7 +109,7 @@ export const unfollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setAddUsers = (users) => ({type: SET_ADD_USERS, users})
 export const setUsersTotalCount = (count) => ({type: SET_USERS_COUNT, count})
-export const loadPage = (number) => ({type: LOAD_PAGE, number})
+export const setloadPage = (number) => ({type: LOAD_PAGE, number})
 export const currentPage = (currentPage) => ({type: CURRENT_PAGE, currentPage})
 export const toggleFetching = (boolean) => ({type: TOGGLE_FETCHING, boolean})
 
