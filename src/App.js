@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import Header from "./components/Header/Header";
+
 import {Route, Routes} from "react-router-dom";
 import Feed from "./Pages/Feed/Feed";
 import Setting from "./Pages/Setting/Setting";
@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ExplorePageContainer from "./Pages/Explore/ExplorePageContainer";
 import ContainerProfile from "./Pages/Profile/ProfileContainer";
 import ContainerLoginPage from "./Pages/Login/ContainerLoginPage";
+import ContainerHeader from "./components/Header/ContainerHeader";
 
 
 const App = (props) => {
@@ -21,7 +22,7 @@ const App = (props) => {
             <div>
 
                 <div className="appWrapper">
-                    <Header/>
+                    <ContainerHeader/>
                     <Navbar/>
                     <div className="appWrapperContent">
                         <Routes>
