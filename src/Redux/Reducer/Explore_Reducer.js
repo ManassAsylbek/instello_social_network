@@ -9,6 +9,7 @@ import avatar_6 from "../../assets/image/avatar-6.jpg";
 import avatar_7 from "../../assets/squadImage/img8.jpg";
 import avatar_8 from "../../assets/squadImage/img4.jpg";
 import avatar_9 from "../../assets/squadImage/img5.jpg";
+import {getUsersApi} from "../../api/api";
 
 
 const FOLLOW = 'FOLLOW';
@@ -19,6 +20,7 @@ const LOAD_PAGE = "LOAD_PAGE";
 const SET_USERS_COUNT = "SET_USERS_COUNT";
 const CURRENT_PAGE = "CURRENT_PAGE";
 const TOGGLE_FETCHING = "TOGGLE_FETCHING";
+const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 
 let initialState = {
@@ -52,7 +54,8 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     loadPage: 1,
-    isFetching: false,
+    isFetching: true,
+    followingInProgress: [],
 
 }
 
@@ -90,6 +93,10 @@ const exploreReducer = (state = initialState, action) => { //используе�
             return {...state, totalUsersCount: action.count} /*каждый раз будет добовлять новых юзеров*/
         case TOGGLE_FETCHING:
             return {...state, isFetching: action.boolean}
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {...state,followingInProgress:action.isFetching
+                    ? [...state.followingInProgress,action.userId]
+                    :state.followingInProgress.filter(id=>id!=action.userId)}
 
         case LOAD_PAGE:
             return {...state, loadPage: action.number}
@@ -112,6 +119,23 @@ export const setUsersTotalCount = (count) => ({type: SET_USERS_COUNT, count})
 export const setloadPage = (number) => ({type: LOAD_PAGE, number})
 export const currentPage = (currentPage) => ({type: CURRENT_PAGE, currentPage})
 export const toggleFetching = (boolean) => ({type: TOGGLE_FETCHING, boolean})
+export const toggleIsFollowingProgress = (isFetching,userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching,userId})
+
+export const getUsersThunkCreator = (currentPage,pageSize)=>{
+    return (dispatch)=>{
+        dispatch(toggleFetching(true))
+
+        getUsersApi.getUsers(currentPage,pageSize)
+            .then(data => {
+                dispatch(toggleFetching(false))
+                dispatch(setUsers(data.items))
+                dispatch(setUsersTotalCount(data.totalCount))
+                }
+            );
+    }
+}
+
+
 
 export default exploreReducer;
 

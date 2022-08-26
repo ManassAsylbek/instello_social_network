@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import * as axios from "axios";
 import ExplorePage from "./ExplorePage";
 
 
@@ -11,10 +10,12 @@ import {
     setUsers,
     setUsersTotalCount,
     toggleFetching,
-    unfollow
+    unfollow,
+    toggleIsFollowingProgress, getUsersThunkCreator
 } from "../../Redux/Reducer/Explore_Reducer";
 
 import Preloader from "../../components/Comman/Preloader/Preloader";
+import {getUsers, getUsersApi} from "../../api/api";
 
 class ContainerExplorePageClass extends React.Component {
 
@@ -23,24 +24,25 @@ class ContainerExplorePageClass extends React.Component {
     }
 
     componentDidMount() {
-        this.props.toggleFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
+        this.props.getUsersThunkCreator(this.props.currentPage,this.props.pageSize)
+       /* this.props.toggleFetching(true)
+
+        getUsersApi.getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
                     this.props.toggleFetching(false)
-                    this.props.setUsers(response.data.items)
-                    this.props.setUsersTotalCount(response.data.totalCount)
+                    this.props.setUsers(data.items)
+                    this.props.setUsersTotalCount(data.totalCount)
                 }
-            );
+            );*/
     }
 
     onAddPage = () => {
         this.props.toggleFetching(true)
         let n = +this.props.loadPage + 1
-        console.log(n)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${n}&count=${8}`)
-            .then(response => {
+        getUsersApi.getUsers(n, 8)
+            .then(data => {
                     this.props.toggleFetching(false)
-                    this.props.setAddUsers(response.data.items)
+                    this.props.setAddUsers(data.items)
                 }
             );
         this.props.setloadPage(n)
@@ -48,9 +50,9 @@ class ContainerExplorePageClass extends React.Component {
 
     onPageChanged = (p) => {
         this.props.currentPage(p)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${9}`)
-            .then(response => {
-                    this.props.setUsers(response.data.items)
+        getUsersApi.getUsers(p, 9)
+            .then(data => {
+                    this.props.setUsers(data.items)
                 }
             );
     }
@@ -65,7 +67,7 @@ class ContainerExplorePageClass extends React.Component {
         }
         return (<>
                 {this.props.isFetching
-                    ? <Preloader />
+                    ? <Preloader/>
                     : <ExplorePage
                         onPageChanged={this.onPageChanged}
                         onAddPage={this.onAddPage}
@@ -76,8 +78,10 @@ class ContainerExplorePageClass extends React.Component {
                         usersPhotoData={this.props.usersPhotoData}
                         unfollow={this.props.unfollow}
                         follow={this.props.follow}
-                        currentPage={this.props.currentPage}/>}
-
+                        currentPage={this.props.currentPage}
+                        toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+                        followingInProgress={this.props.followingInProgress}
+                    />}
 
 
             </>
@@ -98,6 +102,7 @@ let mapStateToProps = (state) => {
         currentPage: state.explorePage.currentPage,
         loadPage: state.explorePage.loadPage,
         isFetching: state.explorePage.isFetching,
+        followingInProgress: state.explorePage.followingInProgress,
 
     }
 }
@@ -138,5 +143,7 @@ export default connect(mapStateToProps, {
     setUsersTotalCount,
     setloadPage,
     currentPage,
-    toggleFetching
+    toggleFetching,
+    toggleIsFollowingProgress,
+    getUsersThunkCreator
 })(ContainerExplorePageClass);
