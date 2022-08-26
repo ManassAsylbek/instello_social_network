@@ -9,7 +9,7 @@ import avatar_6 from "../../assets/image/avatar-6.jpg";
 import avatar_7 from "../../assets/squadImage/img8.jpg";
 import avatar_8 from "../../assets/squadImage/img4.jpg";
 import avatar_9 from "../../assets/squadImage/img5.jpg";
-import {getUsersApi} from "../../api/api";
+import {getFollow, getUnFollow, getUsersApi} from "../../api/api";
 
 
 const FOLLOW = 'FOLLOW';
@@ -102,7 +102,7 @@ const exploreReducer = (state = initialState, action) => { //используе�
             return {...state, loadPage: action.number}
 
         case CURRENT_PAGE:
-            return {...state, currentPage: action.currentPage} /*каждый раз будет добовлять новых юзеров*/
+            return {...state, currentPage: action.currentPage}
         /* case LOAD_USERS:
              return {...state, users: [...state.users,...action.users]}*/
 
@@ -112,29 +112,73 @@ const exploreReducer = (state = initialState, action) => { //используе�
 }
 
 export const follow = (userId) => ({type: FOLLOW, userId})
-export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const unFollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setAddUsers = (users) => ({type: SET_ADD_USERS, users})
 export const setUsersTotalCount = (count) => ({type: SET_USERS_COUNT, count})
 export const setloadPage = (number) => ({type: LOAD_PAGE, number})
-export const currentPage = (currentPage) => ({type: CURRENT_PAGE, currentPage})
+export const setCurrentPage = (currentPage) => ({type: CURRENT_PAGE, currentPage})
 export const toggleFetching = (boolean) => ({type: TOGGLE_FETCHING, boolean})
 export const toggleIsFollowingProgress = (isFetching,userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching,userId})
 
 export const getUsersThunkCreator = (currentPage,pageSize)=>{
     return (dispatch)=>{
         dispatch(toggleFetching(true))
-
+        dispatch(setCurrentPage(currentPage))
         getUsersApi.getUsers(currentPage,pageSize)
             .then(data => {
                 dispatch(toggleFetching(false))
                 dispatch(setUsers(data.items))
+
                 dispatch(setUsersTotalCount(data.totalCount))
                 }
             );
     }
 }
+export const getAddUsersThunkCreator = (loadPage)=>{
+    return (dispatch)=>{
+        dispatch(toggleFetching(true))
+        let n =loadPage + 1
+        getUsersApi.getUsers(n,8)
+            .then(data => {
+                dispatch(toggleFetching(false))
+                dispatch(setAddUsers(data.items))
+                }
+            );
+    }
+}
+export const unFollowSuccess= (userId)=>{
+    return (dispatch)=>{
+        dispatch(toggleIsFollowingProgress(true,userId))
+        getUsersApi.getUnFollow(userId)
+            .then(data => {
 
+                    if (data.resultCode === 0) {
+                        dispatch(unFollow(userId))
+                        dispatch(toggleIsFollowingProgress(false,userId))
+
+                    }
+                }
+            )
+
+    }
+}
+export const followSuccess= (userId)=>{
+    return (dispatch)=>{
+        dispatch(toggleIsFollowingProgress(true,userId))
+        getUsersApi.getFollow(userId)
+            .then(data => {
+
+                    if (data.resultCode === 0) {
+                        dispatch(follow(userId))
+                        dispatch(toggleIsFollowingProgress(false,userId))
+
+                    }
+                }
+            )
+
+    }
+}
 
 
 export default exploreReducer;

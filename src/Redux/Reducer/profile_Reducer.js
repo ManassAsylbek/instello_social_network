@@ -6,7 +6,7 @@ import avatar_4 from "../../assets/image/avatar-4.jpg";
 import img_1 from "../../assets/image/img1.jpg";
 import img_8 from "../../assets/image/img8.jpg";
 import img_4 from "../../assets/image/img4.jpg";
-
+import {getUsersApi} from "../../api/api";
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
 
 
@@ -36,4 +36,20 @@ const profileReducer = (state =initialState,action) => {
 
 
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
+
+export const getUsersProfile = (userId)=>{
+    return (dispatch)=>{
+        if(!userId){
+            userId = 2
+        }
+        getUsersApi.getProfile(userId)
+            .then(data => {
+                dispatch(setUsersProfile(data))
+                }
+            );
+
+
+    }
+}
+
 export default profileReducer

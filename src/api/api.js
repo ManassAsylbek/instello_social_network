@@ -14,34 +14,37 @@ export const getUsersApi = {
             .then(response => {
                 return response.data
             })
+    },
+    getUnFollow(userId) {
+        return instance.delete(`follow/${userId}`)
+            .then(response => {
+                return response.data
+            })
+    },
+    getFollow (userId) {
+        return instance.post(`follow/${userId}`)
+            .then(response => {
+                return response.data
+            })
+    },
+
+    getProfile (userId) {
+        return instance.get(`profile/${userId}`)
+            .then(response => {
+                return response.data
+            })
     }
-}
-export const getAuth = () => {
-    return instance.get(`auth/me`)
-        .then(response => {
-            return response.data
-        })
+
 }
 
-export const getProfile = (userId) => {
-    return instance.get(`profile/${userId}`)
-        .then(response => {
-            return response.data
-        })
+export const getAuthApi = {
+    getAuth () {
+        return instance.get(`auth/me`)
+            .then(response => {
+                return response.data
+            })
+    },
 }
 
-export const getUnFollow = (userId) => {
-    return instance.delete(`follow/${userId}`)
-        .then(response => {
-            return response.data
-        })
-}
-
-export const getFollow = (userId) => {
-    return instance.post(`follow/${userId}`)
-        .then(response => {
-            return response.data
-        })
-}
 
 

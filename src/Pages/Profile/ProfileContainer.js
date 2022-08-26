@@ -1,14 +1,12 @@
 import React from 'react';
 import Profile from "./Profile";
-import * as axios from "axios";
 import {connect} from "react-redux";
+import {getUsersProfile} from "../../Redux/Reducer/profile_Reducer";
 
-
-import {setUsersProfile} from "../../Redux/Reducer/profile_Reducer";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {getProfile} from "../../api/api";
-
-
+import withRouter from "../../HOC/withRouter";
+import WithAuthRedirect from "../../HOC/withAuthRedirect";
+import {compose} from "redux";
+import AuthRedirectComponents from "../Explore/ExplorePageContainer";
 
 
 class ContainerProfile extends React.Component {
@@ -19,16 +17,10 @@ class ContainerProfile extends React.Component {
     }
 
     componentDidMount() {
-        let userId = this.props.router.params.userId;
-        if(!userId){
-             userId = 2
-        }
-        getProfile(userId)
-            .then(data => {
-                    this.props.setUsersProfile(data)
-                }
-            );
+
+        this.props.setUsersProfile(this.props.router.params.userId)
     }
+
     render() {
         return (
             <Profile {...this.props} profile={this.props.profile}/>
@@ -37,29 +29,23 @@ class ContainerProfile extends React.Component {
 }
 
 
-function withRouter(Component) {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                {...props}
-                router={{ location, navigate, params }}
-            />
-        );
-    }
-
-    return ComponentWithRouterProp;
-}
-
 let mapStateToProps = (state) => {
     return {
-        profile:state.profilePage.profile
+        profile: state.profilePage.profile
 
     }
 }
 
+
+/*
 let WithUrlDateContainerProfile = withRouter(ContainerProfile)
 
-export default connect( mapStateToProps,{setUsersProfile})(WithUrlDateContainerProfile)
+
+let AuthRedirectComponents=WithAuthRedirect(WithUrlDateContainerProfile)
+
+ connect( mapStateToProps,{setUsersProfile:getUsersProfile})(AuthRedirectComponents)*/
+export default compose(
+    connect(mapStateToProps, {setUsersProfile: getUsersProfile}),
+    WithAuthRedirect,
+    withRouter
+)(ContainerProfile)

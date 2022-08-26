@@ -1,21 +1,17 @@
 import React from "react";
 import {connect} from "react-redux";
 import ExplorePage from "./ExplorePage";
-
-
-import {
-    currentPage,
-    follow,
-    setAddUsers, setloadPage,
-    setUsers,
-    setUsersTotalCount,
-    toggleFetching,
-    unfollow,
-    toggleIsFollowingProgress, getUsersThunkCreator
-} from "../../Redux/Reducer/Explore_Reducer";
-
 import Preloader from "../../components/Comman/Preloader/Preloader";
-import {getUsers, getUsersApi} from "../../api/api";
+import {
+    getUsersThunkCreator,
+    getAddUsersThunkCreator,
+    followSuccess,
+    unFollowSuccess
+} from "../../Redux/Reducer/Explore_Reducer";
+import WithAuthRedirect from "../../HOC/withAuthRedirect";
+import {compose} from "redux";
+
+
 
 class ContainerExplorePageClass extends React.Component {
 
@@ -24,37 +20,18 @@ class ContainerExplorePageClass extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage,this.props.pageSize)
-       /* this.props.toggleFetching(true)
-
-        getUsersApi.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                    this.props.toggleFetching(false)
-                    this.props.setUsers(data.items)
-                    this.props.setUsersTotalCount(data.totalCount)
-                }
-            );*/
+        this.props.getUsers(this.props.currentPage,this.props.pageSize)
     }
 
     onAddPage = () => {
-        this.props.toggleFetching(true)
-        let n = +this.props.loadPage + 1
-        getUsersApi.getUsers(n, 8)
-            .then(data => {
-                    this.props.toggleFetching(false)
-                    this.props.setAddUsers(data.items)
-                }
-            );
-        this.props.setloadPage(n)
+        this.props.getAddUsers(this.props.loadPage)
+
     }
 
     onPageChanged = (p) => {
-        this.props.currentPage(p)
-        getUsersApi.getUsers(p, 9)
-            .then(data => {
-                    this.props.setUsers(data.items)
-                }
-            );
+        this.props.getUsers(p,9)
+
+
     }
 
 
@@ -76,7 +53,7 @@ class ContainerExplorePageClass extends React.Component {
                         interestData={this.props.interestData}
                         users={this.props.users}
                         usersPhotoData={this.props.usersPhotoData}
-                        unfollow={this.props.unfollow}
+                        unFollow={this.props.unFollow}
                         follow={this.props.follow}
                         currentPage={this.props.currentPage}
                         toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
@@ -106,44 +83,25 @@ let mapStateToProps = (state) => {
 
     }
 }
-/*let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
 
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setAddUsers: (users) => {
-            dispatch(setAddUsersAC(users))
-        },
-        setTotalUseCount: (totalCount) => {
-            dispatch(setUsersTotalCountAC(totalCount))
-        },
-        setLoadPage: (number) => {
-            dispatch(loadPageAC(number))
-        },
-        setCurrentPage: (number) => {
-            dispatch(currentPageAC(number))
-        },
-        setToggleFetching: (boolean) => {
-            dispatch(toggleFetchingAC(boolean))
-        }
-    }
-}*/
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setAddUsers,
-    setUsersTotalCount,
-    setloadPage,
-    currentPage,
-    toggleFetching,
-    toggleIsFollowingProgress,
-    getUsersThunkCreator
-})(ContainerExplorePageClass);
+/*
+let AuthRedirectComponents=WithAuthRedirect(ContainerExplorePageClass)
+
+
+ connect(mapStateToProps, {
+    follow:followSuccess,
+    unFollow:unFollowSuccess,
+    getUsers:getUsersThunkCreator,
+    getAddUsers:getAddUsersThunkCreator,
+})(AuthRedirectComponents);
+*/
+
+export default compose(
+    connect(mapStateToProps, {
+        follow:followSuccess,
+        unFollow:unFollowSuccess,
+        getUsers:getUsersThunkCreator,
+        getAddUsers:getAddUsersThunkCreator,
+    }),
+    WithAuthRedirect
+)(ContainerExplorePageClass)
