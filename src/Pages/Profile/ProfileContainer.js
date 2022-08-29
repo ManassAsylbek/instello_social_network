@@ -16,9 +16,12 @@ class ContainerProfile extends React.Component {
     }
 
     componentDidMount() {
-
-        this.props.setUsersProfile(this.props.router.params.userId)
-        this.props.getUserStatus(this.props.router.params.userId)
+        let userId = this.props.router.params.userId
+        if(!userId){
+            userId = this.props.authorizedUserId
+        }
+        this.props.setUsersProfile(userId)
+        this.props.getUserStatus(userId)
     }
 
     render() {
@@ -37,6 +40,8 @@ let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        authorizedUserId:state.auth.userId,
+        isAuth:state.auth.isAuth,
 
 
     }

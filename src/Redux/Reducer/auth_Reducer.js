@@ -1,5 +1,5 @@
 import {getAuthApi} from "../../api/api";
-import {setUsers, setUsersTotalCount, toggleFetching} from "./Explore_Reducer";
+import {stopSubmit} from "redux-form";
 
 
 const SET_AUTH_USERS = 'SET_AUTH_USERS';
@@ -42,19 +42,24 @@ export const getAuthUser = ()=>{
     }
 }
 export const login = (email, password, rememberMe)=>{
+
     return (dispatch)=>{
+
         getAuthApi.getLogin(email, password, rememberMe)
             .then(response => {
                     if (response.data.resultCode === 0) {
-
                         dispatch(getAuthUser())
-
+                    } else {
+                        let message = response.data.messages.length > 0 ? response.data.messages[0]:"Some error";
+                        dispatch(stopSubmit("login",{_error : message}))
                     }
                 }
             )
     }
 }
 export const logOut = ()=>{
+
+
     return (dispatch)=>{
         getAuthApi.getLogOut()
             .then(response => {
