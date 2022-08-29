@@ -18,9 +18,7 @@ const authReducer = (state = initialState, action) => { //используем �
 
     switch (action.type) {
         case SET_AUTH_USERS:
-            return {
-                ...state, ...action.data,isAuth: true
-            }
+            return {...state, ...action.payload}
 
         default:
             return state;
@@ -28,15 +26,40 @@ const authReducer = (state = initialState, action) => { //используем �
 }
 
 
-export const setAuthUsers = (userId, login, email) => ({type: SET_AUTH_USERS, data:{userId, login, email}})
+export const setAuthUsers = (userId, login, email, isAuth) => ({type: SET_AUTH_USERS,
+    payload:{userId, login, email,isAuth}})
 
-export const getAuthUser = (currentPage,pageSize)=>{
+export const getAuthUser = ()=>{
     return (dispatch)=>{
         getAuthApi.getAuth()
             .then(data => {
                     if (data.resultCode === 0) {
                         let {id, login, email} = data.data
-                        dispatch(setAuthUsers(id, login, email))
+                        dispatch(setAuthUsers(id, login, email,true))
+                    }
+                }
+            )
+    }
+}
+export const login = (email, password, rememberMe)=>{
+    return (dispatch)=>{
+        getAuthApi.getLogin(email, password, rememberMe)
+            .then(response => {
+                    if (response.data.resultCode === 0) {
+
+                        dispatch(getAuthUser())
+
+                    }
+                }
+            )
+    }
+}
+export const logOut = ()=>{
+    return (dispatch)=>{
+        getAuthApi.getLogOut()
+            .then(response => {
+                    if (response.data.resultCode === 0) {
+                        dispatch(setAuthUsers(null, null, null,false))
                     }
                 }
             )

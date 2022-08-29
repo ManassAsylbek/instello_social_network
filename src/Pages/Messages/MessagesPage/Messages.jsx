@@ -4,6 +4,9 @@ import ChatsItem from "./ChatsItem/ChatsItem";
 import search from "../../../assets/image/search.png"
 import MessageItem from "./MessageItem/MessageItem";
 import ChatAvatar from "./ChatAvatar/ChatAvatar";
+import {Field, reduxForm} from "redux-form";
+
+
 
 
 
@@ -15,19 +18,14 @@ const Messages = (props) => {
                                                                      src={obj.img}/>);
 
     let chatElement = props.chatData.map(obj => <ChatsItem message={obj.message} img={obj.img}
-                                                           key={obj.id} />)
-
-
-    let newMessageBody = props.updateNewMessageBody;
-
-
-    let newMessageElement = React.createRef();//создаю ссылку
+                                                           key={obj.id}/>)
+/*
 
 
     let onSendMessageKey = (e) => {
         if (e.key === "Enter") {
-            let text=
-            props.sendMessageCreator();
+            let text =
+                props.sendMessageCreator();
         }
     }
 
@@ -37,8 +35,13 @@ const Messages = (props) => {
 
 
     let onNewMessageChange = (e) => {
-        let body =e.target.value;
+        let body = e.target.value;
         props.updateNewMessageBodyCreator(body)
+    }*/
+
+    const addNewMessage =(values)=>{
+
+        props.sendMessageCreator(values.newMessageBody);
     }
 
     return (
@@ -60,20 +63,35 @@ const Messages = (props) => {
                 <div className={s.chats}>
                     {chatElement}
                 </div>
-                <div className={s.getMessage}>
-                    <input type="text"
-                           onChange={onNewMessageChange}
-                           onKeyDown={onSendMessageKey}
-                           ref={newMessageElement}
-                           placeholder="Your Message.."
-                           value={newMessageBody}/>
-                    <div className={s.btn}>
-                        <span onClick={onSendMessage}>Send</span>
-                    </div>
-                </div>
+
+                <MessageReduxForm onSubmit={addNewMessage}/>
+
             </div>
         </div>
     )
 }
+
+
+
+const MessageForm=(props)=>{
+    return (
+        <form onSubmit={props.handleSubmit} className={s.getMessage}>
+            <Field
+                   component={"input"}
+                   placeholder="Your Message.."
+                   name={"newMessageBody"}
+            />
+            <div >
+                <button className={s.btn}>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const  MessageReduxForm = reduxForm({
+    form:"AddMessageForm"
+})(MessageForm)
+
+
 
 export default Messages;

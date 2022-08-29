@@ -29,10 +29,31 @@ export const getUsersApi = {
     },
 
     getProfile (userId) {
+        return getProfileApi.getProfile(userId)
+    }
+
+}
+
+export const getProfileApi = {
+
+    getProfile (userId) {
         return instance.get(`profile/${userId}`)
-            .then(response => {
+        /*    .then(response => {
                 return response.data
-            })
+            })*/
+    },
+
+    getStatus (userId) {
+        return instance.get(`profile/status/${userId}`)
+          /*  .then(response => {
+                return response.data
+            })*/
+    },
+    getUpdateStatus (status) {
+        return instance.put(`profile/status`, {status: status} )
+           /* .then(response => {
+                return response.data
+            })*/
     }
 
 }
@@ -43,6 +64,12 @@ export const getAuthApi = {
             .then(response => {
                 return response.data
             })
+    },
+    getLogin (email, password, rememberMe = false) {
+        return instance.post(`auth/login`,{email, password, rememberMe})
+    },
+    getLogOut () {
+        return instance.delete(`auth/login`)
     },
 }
 

@@ -5,13 +5,13 @@ import s from "./Profile.module.css";
 import ExplorerContainer from "./AboutUser/Explorer/ExplorerContainer";
 import FeedBlog from "../Feed/FeedBlog/FeedBlog";
 import Preloader from "../../components/Comman/Preloader/Preloader";
+import ProfileStatus from "./Profile.Status/ProfileStatus";
 
 const Profile = (props) => {
 
     if (!props.profile) {
         return <Preloader/>
     }
-
     return (
 
         <div>
@@ -35,6 +35,9 @@ const Profile = (props) => {
 
                         </ul>
                     </div>
+                    <ProfileStatus getUpdateStatus={props.getUpdateStatus}
+                                   status={props.status}
+                    />
 
                     <div className={s.button}>
                         <button className={s.addFriend} type="submit">addFriend</button>

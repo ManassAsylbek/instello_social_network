@@ -15,10 +15,11 @@ const Header = (props) => {
         <div className={s.bell}><img src={bell} alt=""/></div>
         <div className={s.comment}><img src={comment_alt} alt=""/></div>
         <div className={s.image}><NavLink to="/login">{props.isAuth
-            ? <>
+            ? <div className={s.login}>
                 <img src={avatar_2} alt=""/>
                 <span>{props.login}</span>
-            </>
+                <button onClick={props.logOut}>Logout</button>
+            </div>
             :
             <span>login</span>} </NavLink></div>
     </header>

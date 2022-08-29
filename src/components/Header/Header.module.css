@@ -69,3 +69,6 @@
     width: 35px;
     border-radius: 35px;
 }
+.login{
+display: flex;
+}

@@ -6,8 +6,12 @@ import avatar_4 from "../../assets/image/avatar-4.jpg";
 import img_1 from "../../assets/image/img1.jpg";
 import img_8 from "../../assets/image/img8.jpg";
 import img_4 from "../../assets/image/img4.jpg";
-import {getUsersApi} from "../../api/api";
+import {getProfileApi, getUsersApi} from "../../api/api";
+
+
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
+const SET_UPDATE_STATUS = 'SET_UPDATE_STATUS';
 
 
 let initialState={
@@ -22,6 +26,8 @@ let initialState={
         {img: img_4, likeCounts: 30},
     ],
     profile:null,
+    status:"",
+   /* updateStatus:null,*/
 }
 
 const profileReducer = (state =initialState,action) => {
@@ -29,6 +35,10 @@ const profileReducer = (state =initialState,action) => {
 
         case SET_USERS_PROFILE:
             return {...state, profile: action.profile}
+        case SET_USER_STATUS:
+            return {...state, status: action.status}
+     /*   case SET_UPDATE_STATUS:
+            return {...state, updateStatus: action.updateStatus}*/
         default:
             return state;
     }
@@ -36,15 +46,46 @@ const profileReducer = (state =initialState,action) => {
 
 
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+/*export const setUpdateStatus = (updateStatus) => ({type: SET_UPDATE_STATUS, updateStatus})*/
 
 export const getUsersProfile = (userId)=>{
     return (dispatch)=>{
         if(!userId){
-            userId = 2
+            userId = 25011
         }
-        getUsersApi.getProfile(userId)
-            .then(data => {
-                dispatch(setUsersProfile(data))
+        getProfileApi.getProfile(userId)
+            .then(response => {
+                dispatch(setUsersProfile(response.data))
+                }
+            );
+
+
+    }
+}
+
+export const getUserStatus = (userId)=>{
+    return (dispatch)=>{
+        if(!userId){
+            userId = 25011
+        }
+        getProfileApi.getStatus(userId)
+            .then(response => {
+                dispatch(setUserStatus(response.data))
+                }
+            );
+
+
+    }
+}
+
+export const getUpdateStatus = (status)=>{
+    return (dispatch)=>{
+        getProfileApi.getUpdateStatus(status)
+            .then(response => {
+                    if (response.data.resultCode === 0) {
+                        dispatch(setUserStatus(status))
+                    }
                 }
             );
 

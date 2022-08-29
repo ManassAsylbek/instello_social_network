@@ -4,7 +4,8 @@ import profileReducer from "./Reducer/profile_Reducer";
 import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
 import exploreReducer from "./Reducer/Explore_Reducer";
 import authReducer from "./Reducer/auth_Reducer";
-import thunkMiddleware from "redux-thunk"
+import thunkMiddleware from "redux-thunk";
+import {reducer as formReducer} from "redux-form"
 
 
 let reducers = combineReducers({
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     messagesPage:messagesReducer,
     profilePage:profileReducer,
     explorePage:exploreReducer,
-    auth:authReducer
+    auth:authReducer,
+    form:formReducer,
 })
 
 let store = legacy_createStore(reducers,applyMiddleware(thunkMiddleware));//создаем сторе

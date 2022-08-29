@@ -6,7 +6,7 @@ import avatar_7 from "../../assets/image/avatar-7.jpg";
 
 
 const sendMessage = 'SEND-MESSAGE';
-const updateNewMessageBody = 'UPDATE-NEW-CHAT-BODY';
+
 
 let initialState={
     chatData: [
@@ -22,7 +22,6 @@ let initialState={
         {id: 4, name: "John Snow", img: avatar_7},
         {id: 5, name: "Angelina Jolie", img: avatar_2}
     ],
-    updateNewMessageBody:""
 
 
 }
@@ -30,15 +29,10 @@ let initialState={
 const messagesReducer = (state = initialState,action) => {
 
 switch (action.type) {
-
-    case updateNewMessageBody:
-        return {...state, updateNewMessageBody: action.body}
-       /* stateCopy.updateNewMessageBody = action.body;*/
-
     case sendMessage:
-        let body=state.updateNewMessageBody
+        let body=action.newMessageBody
         return  {
-            ...state, updateNewMessageBody : "",
+            ...state,
             chatData : [...state.chatData,{id: 6, img: avatar_2, message:body}]
         }
     default:
@@ -47,9 +41,7 @@ switch (action.type) {
 
 }
 
-export const sendMessageCreator = () => ({type: sendMessage})
+export const sendMessageCreator = (newMessageBody) => ({type: sendMessage,newMessageBody})
 
-export const updateNewMessageBodyCreator = (body) =>
-    ({type: updateNewMessageBody, body: body})
 
 export default messagesReducer

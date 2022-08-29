@@ -4,7 +4,7 @@ import avatar_6 from "../../assets/image/avatar-6.jpg";
 
 
 const ADD_COMMENT = 'ADD-COMMENT';
-const UPDATE_NEW_COMMENT_TEXT = 'UPDATE-NEW-COMMENT-TEXT';
+
 
 let initialState= {
     commentData: [
@@ -12,7 +12,7 @@ let initialState= {
         {user: avatar_1, comment: "In ut odio dsfds sdfdsf"},
         {user: avatar_6, comment: "In ut sdfdsfd gfgf wetre"},
     ],
-    newCommentText:"cool! "
+
 
 }
 
@@ -24,21 +24,15 @@ const feedReducer = (state=initialState,action) => { //используем в �
             return {
                 ...state,
                 newCommentText : "",
-                commentData : [...state.commentData,{user: avatar_2, comment: state.newCommentText}]
+                commentData : [...state.commentData,{user: avatar_2, comment: action.newCommentBody}]
             }
 
-        case UPDATE_NEW_COMMENT_TEXT:
-            return{
-                ...state,
-                newCommentText:action.newText
-            }
         default:
             return state;
     }
 }
 
-export const addCommentActionCreator = () => ({type: ADD_COMMENT})
+export const addCommentActionCreator = (newCommentBody) => ({type: ADD_COMMENT,newCommentBody})
 
-export const updateNewCommentTextActionCreator = (text) => ({type: UPDATE_NEW_COMMENT_TEXT, newText: text})
 
 export default feedReducer

@@ -1,5 +1,5 @@
 import React from "react";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../../Redux/Reducer/messages_Reducer";
+import {sendMessageCreator} from "../../../Redux/Reducer/messages_Reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 
@@ -36,17 +36,12 @@ let mapStateToProps = (state) => {
     return {
         chatData: state.messagesPage.chatData,
         messageData: state.messagesPage.messageData,
-        updateNewMessageBody: state.messagesPage.updateNewMessageBody
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        updateNewMessageBodyCreator: (body) => {
-            /*let action = updateNewMessageBodyCreator(body)*///это функция реагирует на изминение при вводе
-            dispatch(updateNewMessageBodyCreator(body));
-        },
-        sendMessageCreator: () => {
-            dispatch(sendMessageCreator());
+        sendMessageCreator: (newMessageBody) => {
+            dispatch(sendMessageCreator(newMessageBody));
         }
 
     }
