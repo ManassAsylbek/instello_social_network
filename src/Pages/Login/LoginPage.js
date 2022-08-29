@@ -22,7 +22,7 @@ const LoginForm = (props) => {
             <div>
                 <Field component={"input"} type={"checkbox"} name="RememberMe"/>Remember me
             </div>
-             <div>
+            {props.error && <div>
                 <span style={{color:"red"}}>{props.error}</span>
             </div>}
             <div>

@@ -10,6 +10,14 @@ import {
 } from "../../Redux/Reducer/Explore_Reducer";
 import WithAuthRedirect from "../../HOC/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage, getFollowingInProgress,
+    getInterestData, getIsFetching, getLoadPage,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getusersPhotoData
+} from "../../Redux/Reducer/Users_selectots";
 
 
 
@@ -68,7 +76,7 @@ class ContainerExplorePageClass extends React.Component {
 
 }
 
-
+/*
 let mapStateToProps = (state) => {
     return {
         users: state.explorePage.users,
@@ -82,19 +90,22 @@ let mapStateToProps = (state) => {
         followingInProgress: state.explorePage.followingInProgress,
 
     }
+}*/
+
+let mapStateToProps = (state) => {
+    return {
+        users: getUsers(state),
+        interestData: getInterestData(state),
+        usersPhotoData: getusersPhotoData(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        loadPage: getLoadPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
+
+    }
 }
-
-/*
-let AuthRedirectComponents=WithAuthRedirect(ContainerExplorePageClass)
-
-
- connect(mapStateToProps, {
-    follow:followSuccess,
-    unFollow:unFollowSuccess,
-    getUsers:getUsersThunkCreator,
-    getAddUsers:getAddUsersThunkCreator,
-})(AuthRedirectComponents);
-*/
 
 export default compose(
     connect(mapStateToProps, {

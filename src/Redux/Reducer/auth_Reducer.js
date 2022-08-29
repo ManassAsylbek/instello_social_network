@@ -6,10 +6,10 @@ const SET_AUTH_USERS = 'SET_AUTH_USERS';
 
 
 let initialState = {
-    userId:null,
-    login:null,
-    email:null,
-    isAuth:false,
+    userId: null,
+    login: null,
+    email: null,
+    isAuth: false,
 
 
 }
@@ -26,51 +26,52 @@ const authReducer = (state = initialState, action) => { //используем �
 }
 
 
-export const setAuthUsers = (userId, login, email, isAuth) => ({type: SET_AUTH_USERS,
-    payload:{userId, login, email,isAuth}})
+export const setAuthUsers = (userId, login, email, isAuth) => ({
+    type: SET_AUTH_USERS,
+    payload: {userId, login, email, isAuth}
+})
 
-export const getAuthUser = ()=>{
-    return (dispatch)=>{
-        getAuthApi.getAuth()
+export const getAuthUser = () => {
+    return (dispatch) => {
+        return getAuthApi.getAuth()
             .then(data => {
                     if (data.resultCode === 0) {
                         let {id, login, email} = data.data
-                        dispatch(setAuthUsers(id, login, email,true))
+                        dispatch(setAuthUsers(id, login, email, true))
                     }
                 }
             )
     }
 }
-export const login = (email, password, rememberMe)=>{
+export const login = (email, password, rememberMe) => {
 
-    return (dispatch)=>{
+    return (dispatch) => {
 
         getAuthApi.getLogin(email, password, rememberMe)
             .then(response => {
                     if (response.data.resultCode === 0) {
                         dispatch(getAuthUser())
                     } else {
-                        let message = response.data.messages.length > 0 ? response.data.messages[0]:"Some error";
-                        dispatch(stopSubmit("login",{_error : message}))
+                        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+                        dispatch(stopSubmit("login", {_error: message}))
                     }
                 }
             )
     }
 }
-export const logOut = ()=>{
+export const logOut = () => {
 
 
-    return (dispatch)=>{
+    return (dispatch) => {
         getAuthApi.getLogOut()
             .then(response => {
                     if (response.data.resultCode === 0) {
-                        dispatch(setAuthUsers(null, null, null,false))
+                        dispatch(setAuthUsers(null, null, null, false))
                     }
                 }
             )
     }
 }
-
 
 
 export default authReducer;

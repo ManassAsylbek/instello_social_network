@@ -6,6 +6,7 @@ import exploreReducer from "./Reducer/Explore_Reducer";
 import authReducer from "./Reducer/auth_Reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form"
+import appReducer from "./Reducer/app_Reducer";
 
 
 let reducers = combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     explorePage:exploreReducer,
     auth:authReducer,
     form:formReducer,
+    app:appReducer,
 })
 
 let store = legacy_createStore(reducers,applyMiddleware(thunkMiddleware));//создаем сторе
