@@ -4,13 +4,13 @@ import ExplorerImage from "./ExplorerImage/ExplorerImage";
 
 const Explorer = (props) => {
 
-   /* let explorerElement=props.explorerData.map(exp =><ExplorerImage img={exp.img}/> )*/
+
 
     return (
 
         <div className={s.explorer}>
             <p  className={s.text}>Explorer</p>
-            {props.explorerData.map(exp =><ExplorerImage img={exp.img}/> )}
+            {props.explorerData.map(exp =><ExplorerImage key={exp.img} img={exp.img}/> )}
         </div>
     )
 }

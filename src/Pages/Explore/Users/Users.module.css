@@ -1,0 +1,39 @@
+
+
+
+.userPhoto {
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+
+
+.userPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+
+
+}
+
+.userN {
+    position: absolute;
+    bottom: 10px;
+}
+
+.userN span {
+    margin: 5px;
+    /*color: white;*/
+}
+
+.explore {
+    display: grid;
+    align-items: center;
+
+    justify-items: center;
+}
+
+
+.userName{
+    color: #DB3A5D;
+}

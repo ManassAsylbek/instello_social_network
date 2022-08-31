@@ -1,0 +1,15 @@
+.paginator{
+    display: flex;
+}
+
+.selected{
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid black;
+    margin: 2px;
+}
+.pageNumber{
+    cursor: pointer;
+    border: 1px solid black;
+    margin: 2px;
+}

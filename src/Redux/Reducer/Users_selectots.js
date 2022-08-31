@@ -3,6 +3,9 @@
 export const getUsers = (state) =>{
     return  state.explorePage.users
 }
+export const getPortionNumber = (state) =>{
+    return  state.explorePage.portionNumber
+}
 
 export const getInterestData = (state) =>{
     return  state.explorePage.interestData
