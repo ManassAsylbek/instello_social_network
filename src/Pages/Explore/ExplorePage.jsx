@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import style from './ExplorePage.module.css';
 
 import Paginator from "../../components/Comman/Paginator/Paginator";
 import Users from "./Users/Users";
 import Preloader from "../../components/Comman/Preloader/Preloader";
-import {setPortionNumber} from "../../Redux/Reducer/Explore_Reducer";
+
 
 
 

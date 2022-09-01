@@ -1,13 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import ExplorePage from "./ExplorePage";
-import {
-    getUsersThunkCreator,
-    getAddUsersThunkCreator,
-    followSuccess,
-    unFollowSuccess,
-    setPortionNumber
-} from "../../Redux/Reducer/Explore_Reducer";
+
 import WithAuthRedirect from "../../HOC/withAuthRedirect";
 import {compose} from "redux";
 import {
@@ -18,7 +12,13 @@ import {
     getUsers,
     getusersPhotoData
 } from "../../Redux/Reducer/Users_selectots";
-
+import {
+    getUsersThunkCreator,
+    getAddUsersThunkCreator,
+    followSuccess,
+    unFollowSuccess,
+    setPortionNumber
+} from "../../Redux/Reducer/Explore_Reducer";
 
 
 class ContainerExplorePageClass extends React.Component {
@@ -28,7 +28,7 @@ class ContainerExplorePageClass extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage,this.props.pageSize)
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onAddPage = () => {
@@ -37,7 +37,7 @@ class ContainerExplorePageClass extends React.Component {
     }
 
     onPageChanged = (p) => {
-        this.props.getUsers(p,9)
+        this.props.getUsers(p, 9)
 
 
     }
@@ -47,23 +47,23 @@ class ContainerExplorePageClass extends React.Component {
 
 
         return (<>
-                     <ExplorePage
-                        onPageChanged={this.onPageChanged}
-                        onAddPage={this.onAddPage}
-                        totalUsersCount={this.props.totalUsersCount}
-                        pageSize={this.props.pageSize}
-                        interestData={this.props.interestData}
-                        users={this.props.users}
-                        usersPhotoData={this.props.usersPhotoData}
-                        unFollow={this.props.unFollow}
-                        follow={this.props.follow}
-                        currentPage={this.props.currentPage}
-                        toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
-                        followingInProgress={this.props.followingInProgress}
-                        isFetching={this.props.isFetching}
-                        portionNumber={this.props.portionNumber}
-                        setPortionNumber={this.props.setPortionNumber}
-                    />
+                <ExplorePage
+                    onPageChanged={this.onPageChanged}
+                    onAddPage={this.onAddPage}
+                    totalUsersCount={this.props.totalUsersCount}
+                    pageSize={this.props.pageSize}
+                    interestData={this.props.interestData}
+                    users={this.props.users}
+                    usersPhotoData={this.props.usersPhotoData}
+                    unFollow={this.props.unFollow}
+                    follow={this.props.follow}
+                    currentPage={this.props.currentPage}
+                    toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+                    followingInProgress={this.props.followingInProgress}
+                    isFetching={this.props.isFetching}
+                    portionNumber={this.props.portionNumber}
+                    setPortionNumber={this.props.setPortionNumber}
+                />
 
 
             </>
@@ -84,17 +84,17 @@ let mapStateToProps = (state) => {
         loadPage: getLoadPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
-        portionNumber:getPortionNumber(state)
+        portionNumber: getPortionNumber(state)
 
     }
 }
 
 export default compose(
     connect(mapStateToProps, {
-        follow:followSuccess,
-        unFollow:unFollowSuccess,
-        getUsers:getUsersThunkCreator,
-        getAddUsers:getAddUsersThunkCreator,
+        follow: followSuccess,
+        unFollow: unFollowSuccess,
+        getUsers: getUsersThunkCreator,
+        getAddUsers: getAddUsersThunkCreator,
         setPortionNumber
     }),
     WithAuthRedirect

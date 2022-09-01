@@ -6,7 +6,7 @@ const ProfileStatus = (props) => {
 
     const onEditMode =()=>{
         setEditMode(false)
-        props.getUpdateStatus(status)
+     /*   props.getUpdateStatus(status)*/
     }
 
     

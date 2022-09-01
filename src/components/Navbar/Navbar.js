@@ -6,15 +6,16 @@ import Post from "./Post/Post";
 import Following from "./Fallowing/Following";
 import Follower from "./Fallower/Follower";
 import NavbarLink from "./NavbarLink/NavbarLink";
+import {connect} from "react-redux";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <div className='appWrapperNavbar'>
             <NavbarHeader/>
             <div className="appWrapperAvatar">
-                <Avatar/>
+                <Avatar profile={props.profile}/>
 
-                <NickName/>
+                <NickName login={props.login}/>
 
                 <div className="follow">
                     <Post/>
@@ -27,5 +28,11 @@ const Navbar = () => {
         </div>
     );
 };
+let mapStateToProps = (state) => {
+    return {
+        login: state.auth.login,
+        profile: state.profilePage.selfProfile,
+    }
+}
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);

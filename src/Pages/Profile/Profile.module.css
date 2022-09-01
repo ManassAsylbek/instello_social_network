@@ -19,6 +19,35 @@
 
 
 
+.addFile{
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    width: 250px;
+    margin-bottom: 5px;
+    margin-top: 12px;
+}
+
+.addFile span{
+    margin-left:9px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    /*display: flex;
+    align-items: center;*/
+    color:#979797
+    /*color: #2E2E2E;
+
+    opacity: 0.5;*/
+}
+
+.file{
+    display: none;
+}
+
 
 .image {
     background-color: #ffff;

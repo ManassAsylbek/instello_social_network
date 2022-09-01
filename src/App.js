@@ -16,6 +16,8 @@ import withRouter from "./HOC/withRouter";
 import {connect} from "react-redux";
 import Preloader from "./components/Comman/Preloader/Preloader";
 import {initializeApp} from "./Redux/Reducer/app_Reducer";
+import {getUsersProfile} from "./Redux/Reducer/profile_Reducer";
+
 
 
 const Feed = React.lazy(() => import("./Pages/Feed/Feed"));
@@ -26,6 +28,7 @@ const MessagesPage = React.lazy(() => import("./Pages/Messages/MessagesPage"));
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
+        this.props.getUsersProfile(this.props.authorizedUserId)
     }
     render() {
         if (!this.props.initialized) {
@@ -56,8 +59,10 @@ class App extends React.Component {
 let mapStateToProps = (state) => {
     return {
         initialized: state.app.initialized,
+        authorizedUserId: state.auth.userId,
+
     }
 }
 export default compose(withRouter,
-    connect(mapStateToProps, {initializeApp}))
+    connect(mapStateToProps, {initializeApp,getUsersProfile}))
 (App);

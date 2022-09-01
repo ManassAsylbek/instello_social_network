@@ -1,5 +1,7 @@
 import React from "react";
 import s from './Trending.module.css';
+import {compose} from "redux";
+import WithAuthRedirect from "../../HOC/withAuthRedirect";
 
 const Trending =(props)=>{
     return (
@@ -9,4 +11,4 @@ const Trending =(props)=>{
     )
 }
 
-export default Trending;
+export default compose( WithAuthRedirect)(Trending);

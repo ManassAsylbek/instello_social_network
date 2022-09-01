@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./Profile.module.css";
 import userPh from "../../assets/squadImage/images.png"
+import addFileImg from "../../assets/addFile.svg"
 
 import ExplorerContainer from "./AboutUser/Explorer/ExplorerContainer";
 import FeedBlog from "../Feed/FeedBlog/FeedBlog";
@@ -9,14 +10,30 @@ import ProfileStatus from "./Profile.Status/ProfileStatus";
 
 const Profile = (props) => {
 
+    const onMainPhotoSelector = (e) => {
+        if(e.target.files.length){
+            props.savePhoto(e.target.files[0])
+        }
+    }
+
     return (
         <> {!props.profile && <Preloader/>}
             {props.profile && <div>
                 <div className={s.userInform}>
-                    <div className={s.profileImage}>
-                        {props.profile.photos.large
-                            ? <img className={s.image} src={props.profile.photos.large} alt=""/>
-                            : <img className={s.image} src={userPh} alt=""/>
+                    <div>
+                        <div className={s.profileImage}>
+                            {props.profile.photos.large
+                                ? <img className={s.image} src={props.profile.photos.large} alt=""/>
+                                : <img className={s.image} src={userPh} alt=""/>
+                            }
+
+                        </div>
+
+                        {props.isOwner && <label htmlFor="inputTag" className={s.addFile}>
+                            <img src={addFileImg} alt=""/>
+                            <span>Добавьте фото профиля</span>
+                            <input className={s.file} id="inputTag" onChange={onMainPhotoSelector} type="file"/>
+                        </label>
                         }
                     </div>
                     <div>

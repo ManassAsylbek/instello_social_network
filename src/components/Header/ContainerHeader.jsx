@@ -14,6 +14,7 @@ class ContainerHeader extends React.Component {
         return (
             <Header login={this.props.login}
                     isAuth={this.props.isAuth}
+                    profile={this.props.profile}
                     logOut={this.props.logOut}/>
         );
     };
@@ -24,6 +25,7 @@ let mapStateToProps = (state) => {
     return {
         login: state.auth.login,
         isAuth: state.auth.isAuth,
+        profile: state.profilePage.selfProfile,
     }
 }
 export default connect(mapStateToProps, { logOut})(ContainerHeader);

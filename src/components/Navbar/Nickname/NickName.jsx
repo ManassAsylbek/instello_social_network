@@ -1,9 +1,9 @@
 import React from "react";
 import s from './Nickname.module.css'
 import {NavLink} from "react-router-dom";
-const NickName= ()=> {
+const NickName= (props)=> {
     return  <div className={s.nickName}>
-        <NavLink to="profile">Stella Johnson</NavLink>
+        <NavLink to="profile">{props.login}</NavLink>
     </div>
 }
 
