@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/instello/static/css/main.d69ec9b8.css",
-    "main.js": "/instello/static/js/main.b5000893.js",
+    "main.js": "/instello/static/js/main.cff4835f.js",
     "static/css/799.31d6cfe0.chunk.css": "/instello/static/css/799.31d6cfe0.chunk.css",
     "static/js/799.593d9a19.chunk.js": "/instello/static/js/799.593d9a19.chunk.js",
     "static/css/348.92ff3160.chunk.css": "/instello/static/css/348.92ff3160.chunk.css",
@@ -34,7 +34,7 @@
     "static/media/addFile.svg": "/instello/static/media/addFile.edffd94078ca6e45c4c97c18e5e51c57.svg",
     "index.html": "/instello/index.html",
     "main.d69ec9b8.css.map": "/instello/static/css/main.d69ec9b8.css.map",
-    "main.b5000893.js.map": "/instello/static/js/main.b5000893.js.map",
+    "main.cff4835f.js.map": "/instello/static/js/main.cff4835f.js.map",
     "799.593d9a19.chunk.js.map": "/instello/static/js/799.593d9a19.chunk.js.map",
     "348.92ff3160.chunk.css.map": "/instello/static/css/348.92ff3160.chunk.css.map",
     "348.b5d3e4d4.chunk.js.map": "/instello/static/js/348.b5d3e4d4.chunk.js.map",
@@ -45,6 +45,6 @@
   },
   "entrypoints": [
     "static/css/main.d69ec9b8.css",
-    "static/js/main.b5000893.js"
+    "static/js/main.cff4835f.js"
   ]
 }
