@@ -1,7 +1,13 @@
 import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getUpdateStatus, getUsersProfile, getUserStatus,savePhoto} from "../../Redux/Reducer/profile_Reducer";
+import {
+    getUpdateStatus,
+    getUsersProfile,
+    getUserStatus,
+    savePhoto,
+    saveProfile
+} from "../../Redux/Reducer/profile_Reducer";
 
 import withRouter from "../../HOC/withRouter";
 import WithAuthRedirect from "../../HOC/withAuthRedirect";
@@ -44,7 +50,6 @@ class ContainerProfile extends React.Component {
 const ContainerProfile = (props) => {
 
     const refresh = () => {
-        console.log("render")
         let userId = props.router.params.userId
         if (!userId) {
             userId = props.authorizedUserId
@@ -65,6 +70,7 @@ const ContainerProfile = (props) => {
                  getUpdateStatus={props.getUpdateStatus}
                  status={props.status}
                  savePhoto={props.savePhoto}
+                 saveProfile={props.saveProfile}
 
         />
     );
@@ -85,7 +91,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {setUsersProfile: getUsersProfile,
-        getUpdateStatus, getUserStatus, savePhoto}),
+        getUpdateStatus, getUserStatus, savePhoto,saveProfile}),
     WithAuthRedirect,
     withRouter
 )(ContainerProfile)

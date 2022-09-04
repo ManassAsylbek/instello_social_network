@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
-import FormsInput from "../../components/Comman/formsControl/FormsControl";
+import FormsInput, {createField, FormsTextArea} from "../../components/Comman/formsControl/FormsControl";
 import {maxLengthCreator, required} from "../../utilits/validators";
 import {login} from "../../Redux/Reducer/auth_Reducer";
 import {Navigate} from "react-router-dom";
@@ -20,8 +20,13 @@ const LoginForm = (props) => {
                        name={"password"} placeholder="Password" type="password"/>
             </div>
             <div>
-                <Field component={"input"} type={"checkbox"} name="RememberMe"/>Remember me
+                <Field component={FormsInput} type={"checkbox"} name="RememberMe"/>Remember me
             </div>
+            {
+                props.captchaURL && <div><img src={props.captchaURL} alt=""/>
+                    {createField("Symbols from image", "captcha", [required], FormsInput)}</div>
+            }
+
             {props.error && <div>
                 <span style={{color:"red"}}>{props.error}</span>
             </div>}
@@ -39,8 +44,7 @@ const LoginPage = (props) => {
 
 
     const onSubmit = (formData) => {
-        console.log(formData)
-        props.login(formData.email, formData.password, formData.rememberMe,)
+        props.login(formData.email, formData.password, formData.rememberMe,formData.captcha)
     }
     if (props.isAuth) {
         return <Navigate to="/profile"/>
@@ -48,7 +52,7 @@ const LoginPage = (props) => {
     return (
         <div className="login">
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm captchaURL={props.captchaURL} onSubmit={onSubmit}/>
         </div>
     );
 };

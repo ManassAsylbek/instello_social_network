@@ -68,3 +68,6 @@
 .button{
     grid-area: buttons;
 }
+.contact{
+    margin-left: 10px;
+}

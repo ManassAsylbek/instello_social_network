@@ -7,6 +7,7 @@ import img_1 from "../../assets/image/img1.jpg";
 import img_8 from "../../assets/image/img8.jpg";
 import img_4 from "../../assets/image/img4.jpg";
 import {getProfileApi} from "../../api/api";
+import {stopSubmit} from "redux-form";
 
 
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
@@ -41,9 +42,11 @@ const profileReducer = (state = initialState, action) => {
             return {...state, selfProfile: action.selfProfile}
 
         case SET_SAVE_PHOTO:
-            return {...state, selfProfile: {...state.selfProfile, photos: action.photos},profile: {...state.profile, photos: action.photos}}
+            return {...state, selfProfile: {...state.selfProfile, photos: action.photos},
+                profile: {...state.profile, photos: action.photos}}
 
-
+        /*   case SET_UPDATE_STATUS:
+                  return {...state, updateStatus: action.updateStatus}*/
         case SET_USER_STATUS:
             return {...state, status: action.status}
 
@@ -57,6 +60,7 @@ export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export const setSelfUsersProfile = (selfProfile) => ({type: SET_SELF_PROFILE, selfProfile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 export const setSavePhoto = (photos) => ({type: SET_SAVE_PHOTO, photos})
+/*export const setSaveProfile = (profile) => ({type: SET_SAVE_PROFILE, profile})*/
 
 
 export const getUsersProfile = (userId, boolean) => {
@@ -95,6 +99,23 @@ export const savePhoto = (file) => {
         if (response.data.resultCode === 0) {
             dispatch(setSavePhoto(response.data.data.photos))
         }
+    }
+}
+
+export const saveProfile = (profile) => {
+
+    return async (dispatch,getState) => {
+        const userId=getState().auth.userId
+        const response = await getProfileApi.saveProfile(profile)
+
+        if (response.data.resultCode === 0) {
+            dispatch(getUsersProfile(userId))
+        }else {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit("edit-Profile", {_error: message}))
+            return Promise.reject(message)
+        }
+
 
     }
 }

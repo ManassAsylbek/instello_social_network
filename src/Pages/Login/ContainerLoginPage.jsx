@@ -11,14 +11,17 @@ class ContainerLoginPage extends React.Component {
 
     render() {
         return (
-            <LoginPage login={this.props.login} isAuth={this.props.isAuth}/>
+            <LoginPage login={this.props.login}
+                       captchaURL={this.props.captchaURL}
+                       isAuth={this.props.isAuth}/>
         );
     };
 }
 
 let mapStateToProps = (state) => {
     return {
-        isAuth:state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaURL: state.auth.captchaURL
     }
 }
 
